@@ -1,0 +1,188 @@
+package B0108
+
+import (
+	"fmt"
+	"regexp"
+	"server/global"
+	"server/module/pro_manager/model"
+	"server/utils"
+	"strconv"
+	"strings"
+	"sync"
+
+	"go.uber.org/zap"
+)
+
+var limitChan = make(chan bool, 50)
+
+func Convert(proCode string, projectBill model.ProjectBill) (error, model.ProjectBill) {
+	pictures := projectBill.Images
+	projectBill.Pictures = []string{}
+	re := regexp.MustCompile(`\.[^\.]+$`)
+	var wg sync.WaitGroup
+	for ii, picture := range pictures {
+		//解密
+		//decrypt
+
+		imgPng := "convert_" + re.ReplaceAllString(picture, ".png")
+		fmt.Println("iiii", ii, picture)
+		downPath := global.GConfig.LocalUpload.FilePath + projectBill.DownloadPath
+		downPic := downPath + picture
+		cropApic := downPath + "A" + imgPng
+
+		// imgPng := re.ReplaceAllString(picture, ".png")
+		// global.GLog.Info("convert:picture:ii", zap.Any(picture, ii))
+		// downPic := global.GConfig.LocalUpload.FilePath + projectBill.DownloadPath + picture
+		// cropApic := global.GConfig.LocalUpload.FilePath + projectBill.DownloadPath + "A" + imgPng
+		cmd := fmt.Sprintf(`convert -resize x180 %s %s`, downPic, cropApic)
+		global.GLog.Info("load", zap.Any("convert-cmd", cmd))
+		wg.Add(1)
+		limitChan <- true
+		go func() {
+			defer wg.Done()
+			defer func() {
+				if err := recover(); err != nil {
+					global.GLog.Error("转换缩列图异常", zap.Any("", err))
+				}
+			}()
+			fmt.Println("123123", cmd)
+			err, stdout, stderr := utils.ShellOut(cmd)
+			if err != nil {
+				global.GLog.Error("load-cmd-err", zap.Error(err))
+				global.GLog.Error("load-cmd-stderr" + stderr)
+				global.GLog.Error("load-cmd-stdout::" + stdout)
+			}
+			<-limitChan
+		}()
+		fmt.Println("limitChan0000", len(limitChan))
+		//err, stdout, _ := utils.ShellOut(cmd)
+		//if err != nil {
+		//	global.GLog.Error("load-cmd-stdout", zap.Error(err))
+		//}
+		// matched, _ := regexp.MatchString(`(tif|TIF|TIFF|pdf)$`, picture)
+		// if !matched {
+		// 	projectBill.Pictures = append(projectBill.Pictures, picture)
+		// 	continue
+		// }
+		cropPic := downPath + imgPng
+		// cropPic := global.GConfig.LocalUpload.FilePath + projectBill.DownloadPath + imgPng
+		cmdConvert := fmt.Sprintf(`convert -resize 1600x1600 %s %s`, downPic, cropPic)
+		if projectBill.SaleChannel == "理赔" {
+			cmdConvert = fmt.Sprintf(`convert %s %s`, downPic, cropPic)
+		} else {
+			cmdConvert = check_pic(downPic, cropPic)
+			fmt.Println("-----------------------check_pic cmdConvert --------------------------:", cmdConvert)
+			if cmdConvert == "" {
+				projectBill.Pictures = append(projectBill.Pictures, imgPng)
+				cp_pic(downPic, cropPic)
+				continue
+			}
+
+		}
+		cp_pic(downPic, downPath+re.ReplaceAllString(picture, ".png"))
+		global.GLog.Info("cmdConvert", zap.Any("1600*1600", cmdConvert))
+		wg.Add(1)
+		limitChan <- true
+		go func() {
+			defer wg.Done()
+			defer func() {
+				if err := recover(); err != nil {
+					global.GLog.Error("转换异常", zap.Any("", err))
+				}
+			}()
+			fmt.Println("456456", cmdConvert)
+			err, stdout, stderr := utils.ShellOut(cmdConvert)
+			if err != nil {
+				global.GLog.Error("load-cmd-err", zap.Error(err))
+				global.GLog.Error("load-cmd-stderr" + stderr)
+				global.GLog.Error("load-cmd-stdout::" + stdout)
+			}
+			<-limitChan
+		}()
+		//wg.Wait()
+		//err, stdout, _ = utils.ShellOut(cmd)
+		//global.GLog.Info("convert", zap.Any("resize", stdout))
+		//if err != nil {
+		//	global.GLog.Error("convert-resize", zap.Error(err))
+		//}
+
+		//加密
+		//Encrypt
+
+		projectBill.Pictures = append(projectBill.Pictures, imgPng)
+	}
+	wg.Wait()
+	return nil, projectBill
+}
+
+func cp_pic(downPic, cpPic string) {
+	cmd := `cp ` + downPic + ` ` + cpPic
+	if RegIsMatch(downPic, `(tif|TIF|TIFF|pdf)$`) {
+		cmd = fmt.Sprintf(`convert -resize 1600x1600 %s %s;`, downPic, cpPic)
+	}
+	err, _, _ := utils.ShellOut(cmd)
+	fmt.Println("--------赋值原图-----------", err, cmd)
+}
+
+func check_pic(downPic, cropPic string) string {
+	cmd := `identify ` + downPic
+	err, stdout, _ := utils.ShellOut(cmd)
+	fmt.Println("convertconvert", err, stdout)
+	if err != nil {
+		fmt.Println("convertconvert", err, stdout)
+	}
+	arr := strings.Split(stdout, " ")
+	fmt.Println("-------arr-----------", arr)
+	if len(arr) < 7 {
+		return ""
+	}
+	isLarge := false
+	if strings.Index(arr[6], "MiB") != -1 {
+		isLarge = true
+	} else {
+		size := ParseFloat(strings.Replace(arr[6], "B", "", 1))
+		fmt.Println("-------size-----------", size)
+		if (size / 1024) > 1024 {
+			isLarge = true
+		}
+	}
+	fmt.Println("-------isLarge-----------", isLarge)
+	if !isLarge {
+		matched, _ := regexp.MatchString(`(tif|TIF|TIFF|pdf)$`, downPic)
+		if !matched {
+			return ""
+		}
+		if RegIsMatch(downPic, `pdf$`) {
+			re := regexp.MustCompile(`\.[^\.]+$`)
+			pname := re.ReplaceAllString(cropPic, "*.png")
+			return fmt.Sprintf(`convert -resize 1600x1600 %s %s;ls %s`, downPic, cropPic, pname)
+		}
+
+	}
+	if strings.Index(arr[2], "x") != -1 {
+		wh := strings.Split(arr[2], "x")
+		percent, _ := strconv.Atoi(wh[0])
+		h, _ := strconv.Atoi(wh[1])
+		if h < percent {
+			percent = h
+		}
+		if percent > 1200 {
+			percent = 120000 / percent
+			return `nconvert -overwrite -xall -resize ` + strconv.Itoa(percent) + `% ` + strconv.Itoa(percent) + `% -colors 16  -quiet -out png -o ` + cropPic + ` ` + downPic
+		}
+
+	}
+
+	return `nconvert -overwrite -xall -colors 16 -quiet -out png -o ` + cropPic + ` ` + downPic
+	// cmd = `wine /usr/local/bin/nconvert.exe -overwrite -xall -resize 30% 30% -colors 16  -quiet -out png -o 1.png 322023040002299-030105-4364730-1.png`
+}
+
+func ParseFloat(value string) float64 {
+	val, _ := strconv.ParseFloat(value, 64)
+	return val
+}
+
+func RegMatchAll(value string, query string) []string {
+	reg := regexp.MustCompile(query)
+	return reg.FindAllString(value, -1)
+}

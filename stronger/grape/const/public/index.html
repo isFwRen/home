@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>durian</title>
+	<link rel="stylesheet" href="lib/7.scoped.css">
+	<link rel="stylesheet" href="site.css">
+</head>
+
+<body class="win7">
+<aside>
+	<ul class="tree-view has-connector has-collapse-button has-container has-scrollbar">
+		<li>
+			<a href="/" onclick="event.preventDefault(),window.scrollTo(0,0),history.replaceState({},0,'/')">简介</a>
+		</li>
+		<li>
+			<details open="">
+				<summary>客户端接口</summary>
+				<ul>
+					<li>
+						<a href="#list">获取常量表清单</a>
+					</li>
+					<li>
+						<a href="#search">分页查询</a>
+					</li>
+					<li>
+						<a href="#status">同步状态</a>
+					</li>
+				</ul>
+			</details>
+		</li>
+		<li>
+			<details open="">
+				<summary>后端管理接口</summary>
+				<ul>
+					<li>
+						<a href="#import">导入常量表</a>
+					</li>
+					<li>
+						<a href="#insert">添加常量</a>
+					</li>
+					<li>
+						<a href="#edit">修改常量</a>
+					</li>
+					<li>
+						<a href="#delete">删除常量</a>
+					</li>
+					<li>
+						<a href="#drop-table">删除常量表</a>
+					</li>
+					<li>
+						<a href="#export">导出常量表</a>
+					</li>
+					<li>
+						<a href="#release">发布更新</a>
+					</li>
+				</ul>
+			</details>
+		</li>
+	</ul>
+</aside>
+
+
+<main>
+
+<h2><img class="emoji" src="icon.webp" /> durian 常量数据库服务</h2>
+
+<code>
+关于测试
+
+可在同不同的主机上分开运行 duriand 和 duriand。如果在同一台设备上运行，需要防止端口冲突。以下是一个测试的例子：
+
+```sh
+# 运行服务器节点 duriand
+# 在 192.168.1.61 上启动 duriand
+# 访问 http://192.168.1.61:30080/?api_token=... 可以管理常量表
+# 密钥是必须的，可放在查询参数 ?api_token=... 或 http头 Authorization: Bearer ...
+# 限速20k是为了降低数据同步的速度，方便测试和观察
+DURIAN_HOST=192.168.1.61 \
+DURIAN_UPLOAD_LIMIT=20480 \ DURIAN_API_TOKEN=Q2xpZW50cyBTSE9VTEQgbWFrZSBhdXRoZW50aWNhdGVkIHJlcXVlc3RzIHdpdGggYSBiZWFyZXIgdG9rZW4K \
+node backend.js
+# 或者使用编译的 duriand
+DURIAN_HOST=192.168.1.61 DURIAN_UPLOAD_LIMIT=20480 DURIAN_API_TOKEN=... duriand
+```
+
+```sh
+# 运行客户端节点 durianc
+# 可以在同一主机另开终端运行，也可以在能访问到 http://192.168.1.61:30080 的其他主机上运行
+# 注意，DURIAN_HOST 必须是服务器节点的 IP 或者域名
+# 客户端的页面只能本地访问
+# 访问 http://127.0.0.1:30080/ 可以查看客户端的页面，但管理功能不可用
+DURIAN_HOST=192.168.1.61 node client.js
+# 或者使用编译的 durianc
+DURIAN_HOST=192.168.1.61 durianc
+```
+
+数据同步是全自动的，不需要任何干预。但缺少一些强化的细节处理，还需要更多的测试：
+- 超时处理：当BT下载迟迟不能完成时，自动重启BT下载或者降级
+- 降级措施：和前一个相关，当用户无法使用BT协议时，自动切换到 http 下载模式
+- 各种意外：比如，用户下载某数据表时，服务器更新了此表，此时客户端应该自动取消当前下载任务，然后下载最新的版本
+
+
+</code>
+
+<div id="list">
+<details>
+<summary>获取某项目的常量表清单</summary>
+<script>
+/*
+- GET  /sys-const/info-list/:proCode
+- POST /sys-const/info-list { proCode }
+*/
+async function demo_list() {
+	const proCode = document.querySelector('#list form [name="proCode"]').value.trim();
+	const el = document.querySelector('#list pre');
+	el.textContent = '正在处理'
+	const response = await fetch(`/sys-const/info-list/${encodeURIComponent(proCode)}`, {});
+	const docs = await response.json();
+	el.textContent = JSON.stringify(docs, null, 2);
+}
+</script>
+</details>
+<form onsubmit="return event.preventDefault(),demo_list(),false">
+	<label>项目编码</label>
+	<div class="searchbox">
+		<input name="proCode" type="search" placeholder="项目编码" value="B0113" />
+		<button aria-label="search"></button>	
+	</div>
+</form>
+<details open>
+	<summary>结果</summary>
+	<pre>此处显示操作结果</pre>
+</details>
+</div>
+
+<div id="search">
+<details>
+<summary>分页查询</summary>
+<script>
+/*
+- POST /sys-const/page/:proCode/:name { queryNames, pageSize, pageIndex, sort, respNames }
+- POST /sys-const/page { proCode, name, queryNames, pageSize, pageIndex, sort, respNames }
+*/
+async function demo_page() {
+	const query = document.querySelector('#search form [name="query"]').value.trim();
+	const el = document.querySelector('#search pre');
+	try {
+		var data = Hjson.parse(query)
+	} catch (error) {
+		return el.textContent = '无法解析查询条件';
+	}
+	el.textContent = '正在处理';
+	const response = await fetch("/sys-const/page", {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(data),
+	});
+	if (response.status >= 400) {
+		return el.textContent = `HTTP/${response.status} ${response.statusText}\n${
+			await response.text()
+		}`;
+	}
+	const docs = await response.json();
+	el.textContent = JSON.stringify(docs, null, 2);
+}
+</script>
+</details>
+<form onsubmit="return event.preventDefault(),demo_page(),false">
+	<label>查询条件</label>
+	<textarea name="query" placeholder="查询条件">{
+	proCode: "B0113",
+	name: "B0113_百年理赔_百年理赔医院代码表",
+	queryNames:	{
+	医院名称: {
+		$regex: "/^上海市/",
+	},
+	},
+	sort:	[	{	_id: 1	} ],
+	respNames: [ "医院编码", "医院名称" ]
+}</textarea>
+	<input type="submit" role="button" value="查询" />
+</form>
+<details open>
+	<summary>结果</summary>
+	<pre>此处显示操作结果</pre>
+</details>
+</div>
+
+<div id="import">
+<details>
+<summary>导入常量表</summary>
+<script>
+/*
+- PUT  /sys-const/import/:proCode { files:[...] }
+- POST /sys-const/import { proCode, files:[...] }
+*/
+async function demo_import() {
+	const proCode = document.querySelector('#import form [name="proCode"]').value.trim();
+	const files = [...document.querySelector('#import form [name="files"]').files];
+	const el = document.querySelector('#import pre');
+	if (proCode === '' || files.length === 0) return el.textContent = "👆 表单不完整";
+	const formData = new FormData()
+	files.map(file => formData.append("files", file));
+	el.textContent = "正在处理";
+	const response = await fetch(`/sys-const/import/${encodeURIComponent(proCode)}`, {
+		method: "PUT",
+		headers: {
+			"Authorization": `Bearer ${api_token}`,
+		},
+		body: formData,
+	});
+	if (response.status >= 400) {
+		return el.textContent = `HTTP/${response.status} ${response.statusText}\n${
+			await response.text()
+		}`;
+	}
+	const result = await response.json();
+	el.textContent = JSON.stringify(result, null, 2);
+}
+</script>
+</details>
+<form enctype='multipart/form-data' onsubmit="return event.preventDefault(),demo_import(),false">
+	<label>项目编码</label>
+	<input name="proCode" type="text" placeholder="项目编码" value="B0113"/>
+	<input type="file" name="files" multiple />
+	<input type="submit" role="button" value="导入" />
+</form>
+<details open>
+	<summary>结果</summary>
+	<pre>此处显示操作结果</pre>
+</details>
+</div>
+
+
+<div id="insert">
+<details>
+<summary>添加常量</summary>
+<script>
+/*
+批量添加常量
+- PUT  /sys-const/insert/:proCode/:name { items:[...] }
+- POST /sys-const/insert { proCode, name, items:[...] }
+*/
+async function demo_insert() {
+	const proCode = document.querySelector('#insert form [name="proCode"]').value.trim();
+	const name = document.querySelector('#insert form [name="name"]').value.trim();
+	var items = document.querySelector('#insert form [name="items"]').value.trim();
+	const el = document.querySelector('#insert pre');
+	if (proCode === '' || name === '' || items === '') return el.textContent = "👆 表单不完整";
+	try {
+		items = Hjson.parse(items)
+	} catch (error) {
+		return el.textContent = '无法解析填写的常量内容';
+	}
+	if (typeof(items) !== 'object') return el.textContent = '请重新填写常量内容';
+	el.textContent = "正在处理";
+	const response = await fetch(`/sys-const/insert/${encodeURIComponent(proCode)}/${encodeURIComponent(name)}`, {
+		method: "PUT",
+		headers: {
+			"Authorization": `Bearer ${api_token}`,
+			"Content-Type": "application/json",
+	},
+		body: JSON.stringify({items}),
+	});
+	if (response.status >= 400) {
+		return el.textContent = `HTTP/${response.status} ${response.statusText}\n${
+			await response.text()
+		}`;
+	}
+	const result = await response.json();
+	el.textContent = JSON.stringify(result, null, 2);
+}
+</script>
+</details>
+<form onsubmit="return event.preventDefault(),demo_insert(),false">
+	<label>项目编码</label>
+	<input name="proCode" type="text" placeholder="项目编码" value="B0113"/>
+	<label>常量表名称</label>
+	<input name="name" type="text" placeholder="常量表名称"  value="B0113_百年理赔_百年理赔职业代码表" /><br>
+	<label>新的常量</label>
+	<textarea name="items" placeholder="新的常量，数组或单个数据">[
+	{
+		职业编码: "9000000",
+		职业名称: "武林盟主",
+	}
+]</textarea>
+	<input type="submit" role="button" value="添加" />
+</form>
+<details open>
+	<summary>结果</summary>
+	<pre>此处显示操作结果</pre>
+</details>
+</div>
+
+
+<div id="edit">
+<details>
+<summary>修改常量</summary>
+<script>
+/*
+修改某个常量
+- PATCH /sys-const/edit/:proCode/:name/:id { item }
+- POST  /sys-const/edit { proCode, name, id, item }
+*/
+async function demo_edit() {
+	const proCode = document.querySelector('#edit form [name="proCode"]').value.trim();
+	const name = document.querySelector('#edit form [name="name"]').value.trim();
+	const el = document.querySelector('#edit pre');
+	var query = document.querySelector('#edit form [name="query"]').value.trim();
+	var item = document.querySelector('#edit form [name="item"]').value.trim();
+	if (proCode === '' || name === '' || query === '') return el.textContent = "👆 表单不完整";
+	try { query = Hjson.parse(query); }
+	catch (error) { return el.textContent = '无法解析填写的查询条件'; }
+	if (typeof(query) !== 'object') return el.textContent = '请重新填查询条件';
+	try { item = Hjson.parse(item); }
+	catch (error) { return el.textContent = '无法解析填写的修改内容'; }
+	if (typeof(item) !== 'object') return el.textContent = '请重新填写修改内容';
+	el.textContent = "正在处理";
+	const r1 = await fetch("/sys-const/page", {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({
+			proCode, name,
+			queryNames: query,
+			pageSize: 1,
+		}),
+	});
+	const o1 = await r1.json();
+	if (!o1 || !o1.list) return el.textContent = '查询异常';
+	if (!o1.list[0] || !o1.list[0]._id) return el.textContent = `未找到此数据`;
+	const id = o1.list[0]._id;
+	const response = await fetch(`/sys-const/edit/${encodeURIComponent(proCode)}/${encodeURIComponent(name)}/${encodeURIComponent(id)}`, {
+		method: "PATCH",
+		headers: {
+			"Authorization": `Bearer ${api_token}`,
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({item}),
+	});
+	if (response.status >= 400) {
+		return el.textContent = `HTTP/${response.status} ${response.statusText}\n${
+			await response.text()
+		}`;
+	}
+	const result = await response.json();
+	el.textContent = JSON.stringify(result, null, 2);
+}
+</script>
+</details>
+<form onsubmit="return event.preventDefault(),demo_edit(),false">
+	<label>项目编码</label>
+	<input name="proCode" type="text" placeholder="项目编码" value="B0113"/>
+	<label>常量表名称</label>
+	<input name="name" type="text" placeholder="常量表名称"  value="B0113_百年理赔_百年理赔职业代码表" /><br>
+	<label>查询条件，用于确定修改哪个数据项</label>
+	<textarea name="query" placeholder="查询条件，修改哪个常量">{
+	职业编码: "9000000",
+}</textarea>
+	<textarea name="item" placeholder="修改内容">{
+	$set: {
+		职业名称: "藏经阁扫地僧",
+	}
+}</textarea>
+	<input type="submit" role="button" value="修改" />
+</form>
+<details open>
+	<summary>结果</summary>
+	<pre>此处显示操作结果</pre>
+</details>
+</div>
+
+
+<div id="delete">
+<details>
+<summary>删除常量</summary>
+<script>
+/*
+- DELETE /sys-const/del-lines/:proCode/:name { ids:[...] }
+- POST   /sys-const/del-lines { proCode, name, ids:[...] }
+*/
+async function demo_delete() {
+	const proCode = document.querySelector('#delete form [name="proCode"]').value.trim();
+	const name = document.querySelector('#delete form [name="name"]').value.trim();
+	const el = document.querySelector('#delete pre');
+	var queryNames = document.querySelector('#delete form [name="query"]').value.trim();
+	if (proCode === '' || name === '' || queryNames === '') return el.textContent = "👆 表单不完整";
+	try { queryNames = Hjson.parse(queryNames); }
+	catch (error) { return el.textContent = '无法解析填写的查询条件'; }
+	if (typeof(queryNames) !== 'object') return el.textContent = '请重新填查询条件';
+	el.textContent = "正在处理";
+	const r1 = await fetch("/sys-const/page", {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({ proCode, name, queryNames, pageSize: 100 }),
+	});
+	const o1 = await r1.json();
+	if (!o1 || !o1.list || !o1.list.length) return el.textContent = '查询异常';
+	if (o1.list.length === 0) return el.textContent = `未找到此数据`;
+	const ids = o1.list.map(o => o._id);
+	const response = await fetch(`/sys-const/del-lines/${encodeURIComponent(proCode)}/${encodeURIComponent(name)}`, {
+		method: "DELETE",
+		headers: {
+			"Authorization": `Bearer ${api_token}`,
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({ids}),
+	});
+	if (response.status >= 400) {
+		return el.textContent = `HTTP/${response.status} ${response.statusText}\n${
+			await response.text()
+		}`;
+	}
+	const result = await response.json();
+	el.textContent = JSON.stringify(result, null, 2);
+}
+</script>
+</details>
+<form onsubmit="return event.preventDefault(),demo_delete(),false">
+	<label>项目编码</label>
+	<input name="proCode" type="text" placeholder="项目编码" value="B0113"/>
+	<label>常量表名称</label>
+	<input name="name" type="text" placeholder="常量表名称"  value="B0113_百年理赔_百年理赔职业代码表" /><br>
+	<label>查询条件，用于确定删除哪些数据项</label>
+	<textarea name="query" placeholder="查询条件">{
+	职业编码: "9000000",
+}</textarea>
+	<input type="submit" role="button" value="删除" />
+</form>
+<details open>
+	<summary>结果</summary>
+	<pre>此处显示操作结果</pre>
+</details>
+</div>
+
+
+<div id="drop-table">
+<details>
+<summary>删除常量表</summary>
+<script>
+/*
+- DELETE /sys-const/del-tables/:proCode { name }
+- POST   /sys-const/del-tables { proCode, name }
+*/
+async function demo_drop() {
+	const proCode = document.querySelector('#drop-table form [name="proCode"]').value.trim();
+	const name = document.querySelector('#drop-table form [name="name"]').value.trim().split(/[\n\r]+/).map(line => line.trim()).filter(line => line !== '');
+	const el = document.querySelector('#drop-table pre');
+	if (proCode === '' || name.length === 0) return el.textContent = "👆 表单不完整";
+	el.textContent = "正在处理";
+	const response = await fetch(`/sys-const/del-tables/${encodeURIComponent(proCode)}`, {
+		method: "DELETE",
+		headers: {
+			"Authorization": `Bearer ${api_token}`,
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({name}),
+	});
+	if (response.status >= 400) {
+		return el.textContent = `HTTP/${response.status} ${response.statusText}\n${
+			await response.text()
+		}`;
+	}
+	const result = await response.json();
+	el.textContent = JSON.stringify(result, null, 2);
+}
+</script>
+</details>
+<form onsubmit="return event.preventDefault(),demo_drop(),false">
+	<label>项目编码</label>
+	<input name="proCode" type="text" placeholder="项目编码" value="B0113"/><br>
+	<label>常量表名称，一行一个</label>
+	<textarea name="name" placeholder="常量表名称"></textarea>
+	<input type="submit" role="button" value="删除" />
+</form>
+<details open>
+	<summary>结果</summary>
+	<pre>此处显示操作结果</pre>
+</details>
+</div>
+
+
+<div id="export">
+<details>
+<summary>导出常量表</summary>
+<script>
+/*
+导出一个常量表，下载格式为 xlsx
+- GET  /sys-const/export/:proCode/:name
+- POST /sys-const/export { proCode, name }
+*/
+async function demo_export() {
+	const proCode = document.querySelector('#export form [name="proCode"]').value.trim();
+	const name = document.querySelector('#export form [name="name"]').value.trim();
+	const el = document.querySelector('#export pre');
+	if (proCode === '' || name === '') return el.textContent = "👆 表单不完整";
+	el.outerHTML = `<pre>
+<a href="/sys-const/export/${encodeURIComponent(proCode)}/${encodeURIComponent(name)}?api_token=${encodeURIComponent(api_token)}" target="_blank" download>点击这里下载</a>
+</pre>`
+}
+</script>
+</details>
+<form onsubmit="return event.preventDefault(),demo_export(),false">
+	<label>项目编码</label>
+	<input name="proCode" type="text" placeholder="项目编码" value="B0113"/>
+	<label>常量表名称</label>
+	<input name="name" type="text" placeholder="常量表名称" value="B0113_百年理赔_百年理赔职业代码表" />
+	<input type="submit" role="button" value="导出" />
+</form>
+<details open>
+	<summary>结果</summary>
+	<pre>此处显示操作结果</pre>
+</details>
+</div>
+
+
+<div id="release">
+<details>
+<summary>发布更新</summary>
+<script>
+/*
+- PATCH /sys-const/release/:proCode { name: [...] }
+- POST  /sys-const/release { proCode, name: [...] }
+*/
+async function demo_release() {
+	const proCode = document.querySelector('#release form [name="proCode"]').value.trim();
+	const name = document.querySelector('#release form [name="name"]').value.trim().split(/[\n\r]+/).map(line => line.trim()).filter(line => line !== '');
+	const el = document.querySelector('#release pre');
+	if (proCode === '' || name.length === 0) return el.textContent = "👆 表单不完整";
+	el.textContent = "正在处理";
+	const response = await fetch(`/sys-const/release/${encodeURIComponent(proCode)}`, {
+		method: "PATCH",
+		headers: {
+			"Authorization": `Bearer ${api_token}`,
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({name}),
+	});
+	if (response.status >= 400) {
+		return el.textContent = `HTTP/${response.status} ${response.statusText}\n${
+			await response.text()
+		}`;
+	}
+	const result = await response.json();
+	el.textContent = JSON.stringify(result, null, 2);
+}
+</script>
+</details>
+<form onsubmit="return event.preventDefault(),demo_release(),false">
+	<label>项目编码</label>
+	<input name="proCode" type="text" placeholder="项目编码" value="B0113"/><br>
+	<label>常量表名称，一行一个</label>
+	<textarea name="name" placeholder="常量表名称"></textarea>
+	<input type="submit" role="button" value="发布" />
+</form>
+<details open>
+	<summary>结果</summary>
+	<pre>此处显示操作结果</pre>
+</details>
+</div>
+
+
+</main>
+<script src="lib/hjson.min.js"></script>
+<script>
+// 检查尚未实现的功能
+;(_ =>{
+	[...document.querySelectorAll('aside a')].map(a => {
+		const href = a.getAttribute('href');
+		if (href[0] != '#') return
+		const el = document.querySelector(href);
+		if (el) return
+		a.toggleAttribute('disabled', true);
+		console.debug('disable', href);
+	})
+})();
+// 处理 api_token
+try {
+	var api_token = location.search.slice(1).split('&').filter(o => o.indexOf("api_token=") === 0)[0].slice(10)
+} catch (error) {}
+if (!api_token) alert('未设置 api_token');
+</script>
+</body>
+
+</html>

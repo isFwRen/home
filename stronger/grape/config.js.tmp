@@ -1,0 +1,59 @@
+// 打包类型
+exports.packageName = "[Name]";
+// 常量数据库路径
+exports.durianDir = ".durian";
+// 常量数据库路径
+exports.constNodeOptions = '--max-old-space-size=8000';
+// 常量秘钥
+exports.constKey = "oc5gb28i88pAwE4sxE9aYGgCMtErEuhw";
+// 服务端的API密钥
+exports.apiToken = "5pyq6K6+572uYmFzZTY05qC85byP55qE546v5aKD5Y+Y6YePRFVSSUFOX0FQSV9UT0tFTuWtmOWcqOS4pemHjeeahOWuieWFqOmXrumimA=="
+// 打包需要打开的地址
+exports.customConfigs = {
+    "理赔内网管理-beta": {
+        isCommon: true,
+        ip: "192.168.202.23",
+        port: "1111",
+    },
+    "理赔管理-beta": {
+        isCommon: true,
+        ip: "www.i-confluence.com",
+        port: "31111",
+    },
+    "理赔内网录入-beta": {
+        ip: "192.168.202.23",
+        isIntranet: true,
+        port: "6700",
+        constServer:"http://192.168.202.23:30080/sys-const",
+    },
+    "理赔录入-beta": {
+        ip: "www.i-confluence.com",
+        port: "36700",
+        constServer:"http://www.i-confluence.com:30080/sys-const",
+        trackers:
+            "http://bt.endpot.com:80/announce,http://tracker.openbittorrent.com:80/announce,https://1337.abcvg.info:443/announce,https://t.zerg.pw/announce,https://t1.hloli.org:443/announce,https://tr.ready4.icu:443/announce,https://tracker.cloudit.top:443/announce,https://tracker.gbitt.info:443/announce,https://tracker.imgoingto.icu:443/announce,https://tracker.ipfsscan.io:443/announce,https://tracker.kuroy.me:443/announce,https://tracker.lilithraws.org:443/announce,https://tracker.loligirl.cn:443/announce,https://tracker.tamersunion.org:443/announce,https://tracker1.520.jp:443/announce,https://tracker2.ctix.cn:443/announce,udp://exodus.desync.com:6969/announce,udp://explodie.org:6969/announce,udp://open.stealth.si:80/announce,udp://opentracker.i2p.rocks:6969/announce,udp://private.anonseed.com:6969/announce,udp://retracker01-msk-virt.corbina.net:80/announce,udp://sanincode.com:6969/announce,udp://tracker.4.babico.name.tr:3131/announce,udp://tracker.auctor.tv:6969/announce,udp://tracker.openbittorrent.com:6969/announce,udp://tracker.opentrackr.org:1337/announce,udp://tracker.theoks.net:6969/announce,udp://tracker.tiny-vps.com:6969/announce,udp://tracker.torrent.eu.org:451/announce,udp://tracker1.bt.moack.co.kr:80/announce,udp://uploads.gamecoast.net:6969/announce",
+    },
+    "理赔内网管理": {
+        isCommon: true,
+        ip: "192.168.0.45",
+        port: "2222",
+    },
+    "理赔管理": {
+        isCommon: true,
+        ip: "www.i-confluence.com",
+        port: "53000",
+    },
+    "理赔内网录入": {
+        ip: "192.168.0.45",
+        isIntranet: true,
+        port: "6700",
+        constServer:"http://192.168.0.50:30080/sys-const",
+    },
+    "理赔录入": {
+        ip: "www.i-confluence.com",
+        port: "2600",
+        constServer:"http://www.i-confluence.com:60080/sys-const",
+        trackers:
+            "http://bt.endpot.com:80/announce,http://tracker.openbittorrent.com:80/announce,https://1337.abcvg.info:443/announce,https://t.zerg.pw/announce,https://t1.hloli.org:443/announce,https://tr.ready4.icu:443/announce,https://tracker.cloudit.top:443/announce,https://tracker.gbitt.info:443/announce,https://tracker.imgoingto.icu:443/announce,https://tracker.ipfsscan.io:443/announce,https://tracker.kuroy.me:443/announce,https://tracker.lilithraws.org:443/announce,https://tracker.loligirl.cn:443/announce,https://tracker.tamersunion.org:443/announce,https://tracker1.520.jp:443/announce,https://tracker2.ctix.cn:443/announce,udp://exodus.desync.com:6969/announce,udp://explodie.org:6969/announce,udp://open.stealth.si:80/announce,udp://opentracker.i2p.rocks:6969/announce,udp://private.anonseed.com:6969/announce,udp://retracker01-msk-virt.corbina.net:80/announce,udp://sanincode.com:6969/announce,udp://tracker.4.babico.name.tr:3131/announce,udp://tracker.auctor.tv:6969/announce,udp://tracker.openbittorrent.com:6969/announce,udp://tracker.opentrackr.org:1337/announce,udp://tracker.theoks.net:6969/announce,udp://tracker.tiny-vps.com:6969/announce,udp://tracker.torrent.eu.org:451/announce,udp://tracker1.bt.moack.co.kr:80/announce,udp://uploads.gamecoast.net:6969/announce",
+    },
+};

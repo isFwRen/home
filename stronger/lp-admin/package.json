@@ -1,0 +1,91 @@
+{
+  "name": "lp-admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --port 9966",
+    "build": "vue-cli-service build --mode prod",
+    "build:test": "vue-cli-service build --mode test",
+    "format": "prettier --write \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@mdi/font": "^6.1.95",
+    "@videojs-player/vue": "^1.0.0",
+    "@wangeditor/editor": "^5.1.6",
+    "@wangeditor/editor-for-vue": "^1.0.2",
+    "animate.css": "^4.1.1",
+    "axios": "^0.21.4",
+    "clipboard-vue": "^1.0.5",
+    "core-js": "^3.6.5",
+    "crypto-js": "^4.1.1",
+    "echarts": "^5.3.3",
+    "epic-spinners": "^1.1.0",
+    "fabric": "^5.3.0",
+    "localforage": "^1.10.0",
+    "lodash": "^4.17.21",
+    "material-design-icons": "^3.0.1",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.34",
+    "monaco-editor": "^0.27.0",
+    "monaco-editor-webpack-plugin": "^4.2.0",
+    "nifty-util": "^1.1.5",
+    "node-sass": "^7.0.1",
+    "pouchdb": "^7.2.2",
+    "pouchdb-adapter-memory": "^7.3.0",
+    "pouchdb-find": "^7.2.2",
+    "prettier": "^2.8.8",
+    "qrcode": "^1.5.1",
+    "socket.io-client": "^1.7.4",
+    "terser-webpack-plugin": "^5.3.9",
+    "totp-generator": "^1.0.0",
+    "v-viewer": "^1.6.4",
+    "video.js": "^8.10.0",
+    "vkbeautify": "^0.99.3",
+    "vue": "^2.6.11",
+    "vue-highlightjs": "^1.3.3",
+    "vue-rocket": "^0.38.17",
+    "vue-router": "^3.5.2",
+    "vue-socket.io": "^3.0.10",
+    "vue-toasted": "^1.1.28",
+    "vue-video-player": "^5.0.2",
+    "vue-virtual-scroller": "^1.0.10",
+    "vuedraggable": "^2.24.3",
+    "vuetify": "^2.6.3",
+    "vuex": "^3.6.2",
+    "vxe-table": "^3.4.13",
+    "xe-utils": "^3.3.2",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "sass": "^1.39.0",
+    "sass-loader": "^7.3.1",
+    "speed-measure-webpack-plugin": "^1.5.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

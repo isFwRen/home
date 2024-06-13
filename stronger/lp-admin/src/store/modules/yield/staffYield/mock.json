@@ -1,0 +1,68 @@
+{
+	"code": 200,
+	"data": {
+		"list": [
+			{
+				"code": "1115",
+				"nickName": "艹艹艹艹艹艹",
+				"submitTime": "2022-01-18 19:51:03",
+				"addUpToSomething": 0,
+				"proSummary": [
+					{
+						"proCode": "B0114",
+						"mary": 600,
+						"op0": 6010,
+						"op1NotExpenseAccount": 6020,
+						"op1ExpenseAccount": 6030,
+						"op2NotExpenseAccount": 6400,
+						"op2ExpenseAccount": 6050,
+						"question": 6060
+					},
+					{
+						"proCode": "B0118",
+						"mary": 6200,
+						"op0": 6300,
+						"op1NotExpenseAccount": 6050,
+						"op1ExpenseAccount": 6060,
+						"op2NotExpenseAccount": 6070,
+						"op2ExpenseAccount": 6080,
+						"question": 600
+					}
+				]
+			},
+			{
+				"code": "1114",
+				"nickName": "艹艹艹艹艹",
+				"submitTime": "2022-01-18 19:51:03",
+				"addUpToSomething": 0,
+				"proSummary": [
+					{
+						"proCode": "B0114",
+						"mary": 500,
+						"op0": 500,
+						"op1NotExpenseAccount": 500,
+						"op1ExpenseAccount": 500,
+						"op2NotExpenseAccount": 500,
+						"op2ExpenseAccount": 500,
+						"question": 500
+					},
+					{
+						"proCode": "B0118",
+						"mary": 0,
+						"op0": 0,
+						"op1NotExpenseAccount": 0,
+						"op1ExpenseAccount": 0,
+						"op2NotExpenseAccount": 0,
+						"op2ExpenseAccount": 0,
+						"question": 0
+					}
+				]
+			}
+		],
+		"top": ["B0114", "B0118"],
+		"total": 2,
+		"pageIndex": 1,
+		"pageSize": 10
+	},
+	"msg": "操作成功"
+}

@@ -1,0 +1,590 @@
+///**
+// * @Author: xingqiyi
+// * @Description:
+// * @Date: 2022/11/25 10:14
+// */
+//
+package B0108
+//
+//import (
+//	"bytes"
+//	"errors"
+//	"fmt"
+//	"go.uber.org/zap"
+//	"golang.org/x/text/encoding/simplifiedchinese"
+//	"golang.org/x/text/transform"
+//	"io/ioutil"
+//	"regexp"
+//	"server/global"
+//	l "server/module/load/model"
+//	"server/module/pro_manager/const_data"
+//	m "server/module/pro_manager/model"
+//	"server/module/pro_manager/project/B0108"
+//	"server/module/report_management/model"
+//	"server/module/report_management/model/request"
+//	u "server/utils"
+//	"strings"
+//	"time"
+//	"unicode"
+//)
+//
+////报表内容说明：
+////日期：匹配案件列表的日期，格式为：YYYY/MM/DD
+////批次号：匹配案件列表的批次号
+////销售渠道：匹配案件列表的销售渠道
+////案件号：匹配案件列表的案件号
+////影像数量：显示案件号对应的影像数量
+////机构：匹配案件列表的机构
+////医保类型：匹配案件列表的医保类型
+////扫描时间：匹配案件列表的扫描时间，格式为：YYYY/MM/DD HH:MM:SS
+////下载时间：匹配案件列表的日期+时间，格式为：YYYY/MM/DD HH:MM:SS
+////导出时间：匹配案件列表的导出时间，格式为：YYYY/MM/DD HH:MM:SS
+////初次回传时间：显示案件号第一次回传的时间，格式为：格式为：YYYY/MM/DD HH:MM:SS
+////最新回传时间：匹配案件列表的回传时间，格式为：YYYY/MM/DD HH:MM:SS
+////最晚回传时间：案件最晚的回传时间，格式为：YYYY-MM-DD hh:mm:ss，最晚回传时间计算方式：
+////延迟时间：
+////“初次回传时间”晚于“最晚回传时间”时，延迟时间=初次回传时间-最晚回传时间，格式为HH:MM:SS
+////“初次回传时间”不晚于“最晚回传时间”，显示为空
+////案件状态：匹配案件列表的案件状态
+////是否超时：
+////“初次回传时间”晚于“最晚回传时间”时，显示为“是”
+////“初次回传时间”晚于“最晚回传时间”时，显示为“否”
+////处理时长：处理时长=(初次回传时间-扫描时间)*24，格式为数值，保留2个小数点
+////录入状态：匹配案件列表的录入状态
+////理赔类型：匹配案件列表的理赔类型
+////账单金额：匹配案件列表的账单金额
+////发票数量：匹配案件列表的发票数量
+////清单数量：计算案件清单的录入数量，计算方式为：不同影像中字段名称包含“清单所属发票”字样的个数，同一张影像中字段名称存在多个包含“清单所属发票”的字样时，属于1个；(例：初审时在A影像出现2个“清单所属发票”的字样，则清单数量为1)
+////问题件数量：匹配案件列表的问题件数量
+////疾病诊断：显示字段名称包含“疾病诊断”的结果数据，多个时，用分号“；”隔开
+////录入字符数：显示案件录入的字符数，一个半角数字/字母/符号为一个字符，一个全角数字/字母/符号、中文为两个字符
+////结算字符数：xml的字符数，一个半角数字/字母/符号为一个字符，一个全角数字/字母/符号、中文为两个字符(项目有特殊要求，对应项目则以最新的需求为准)
+//
+////结算金额：根据项目特殊定制
+////时效考核要求：根据项目特殊定制
+//
+////案件次数：计算同一案件号在30天内出现的次数，30天内出现多次时，第一次为1，第二次为2，以此类推；
+////初审进入时间：工序进入初审的时间，格式为：YYYY/MM/DD HH:MM:SS
+////初审结束时间：工序结束初审的时间，格式为：YYYY/MM/DD HH:MM:SS
+////初审处理时长：初审处理时长=(初审结束时间-初审进入时间)*24，格式为数值，保留2个小数点
+////一码进入时间：工序进入一码的时间，格式为：YYYY/MM/DD HH:MM:SS
+////一码结束时间：工序结束一码的时间，格式为：YYYY/MM/DD HH:MM:SS
+////一码处理时长：一码处理时长=(一码结束时间-一码进入时间)*24，格式为数值，保留2个小数点
+////二码进入时间：工序进入二码的时间，格式为：YYYY/MM/DD HH:MM:SS
+////二码结束时间：工序结束二码的时间，格式为：YYYY/MM/DD HH:MM:SS
+////二码处理时长：二码处理时长=(二码结束时间-二码进入时间)*24，格式为数值，保留2个小数点
+////问题件进入时间：工序进入问题件的时间，格式为：YYYY/MM/DD HH:MM:SS
+////问题件结束时间：工序结束问题件的时间，格式为：YYYY/MM/DD HH:MM:SS
+////问题件处理时长：问题件处理时长=(问题件结束时间-问题件进入时间)*24，格式为数值，保留2个小数点
+////质检进入时间：案件首次导出的时间，格式为：YYYY/MM/DD HH:MM:SS
+////质检结束时间：案件首次回传的时间，格式为：YYYY/MM/DD HH:MM:SS
+////质检处理时长：质检处理时长=(质检结束时间-质检进入时间)*24，格式为：YYYY/MM/DD HH:MM:SS
+//type billObj struct {
+//	m.ProjectBill
+//	ProjectBlock []l.ProjectBlock `json:"projectBlock" gorm:"foreignKey:BillID;references:ID;"`
+//	ProjectField []l.ProjectField `json:"projectField" gorm:"foreignKey:BillID;references:ID;"`
+//}
+//func (v billObj) TableName() string {
+//	return "project_bills"
+//}
+//
+//func GetBusinessDetails(info request.GetBusinessDetailsSearch) (err error, list interface{}, total int64) {
+//	limit := info.PageInfo.PageSize
+//	offset := info.PageInfo.PageSize * (info.PageInfo.PageIndex - 1)
+//	ProCode := info.ProCode
+//	//连接数据库
+//	db := global.ProDbMap[ProCode]
+//	if db == nil {
+//		return global.ProDbErr, "", 0
+//	}
+//	businessDetails := make([]model.BusinessDetailsExport, 0)
+//	var bills []m.ProjectBill
+//	err = db.Model(&m.ProjectBill{}).Where("scan_at >= ? AND scan_at <= ? AND stage = '7' ", info.StartTime, info.EndTime).Limit(limit).Offset(offset).Find(&bills).Error
+//	if err != nil {
+//		return err, "", 0
+//	}
+//	db.Model(&m.ProjectBill{}).Where("scan_at >= ? AND scan_at <= ? AND stage = '7' ", info.StartTime, info.EndTime).Count(&total)
+//
+//	var item model.BusinessDetailsExport
+//	for _, bill := range bills {
+//		item.CreateAt = bill.CreatedAt.Format("2006-01-02")             //日期
+//		item.BatchNum = bill.BatchNum                                   //批次号
+//		item.SaleChannel = bill.SaleChannel                             //销售渠道
+//		item.BillNum = bill.BillNum                                     //案件号
+//		item.PictureNumber = len(bill.Images)                           //影像数量
+//		item.Agency = bill.Agency                                       //机构
+//		item.InsuranceType = bill.InsuranceType                         //医保类型
+//		item.ScanAt = bill.ScanAt.Format("2006-01-02 15:04:05")         //扫描时间
+//		item.DownloadAt = bill.DownloadAt.Format("2006-01-02 15:04:05") //下载时间
+//		item.ExportAt = bill.ExportAt.Format("2006-01-02 15:04:05")     //导出时间
+//		item.Stage = const_data.BillStage[bill.Stage]                   //录入状态
+//		item.ClaimType = const_data.BillClaimType[bill.ClaimType]       //理赔类型
+//		item.CountMoney = bill.CountMoney                               //账单金额
+//		item.InvoiceNum = bill.InvoiceNum                               //发票数量
+//		item.Status = const_data.BillStatus[bill.Status]                //案件状态
+//		item.QuestionNum = bill.QuestionNum                             //问题件数量
+//		item.QualityUserCode = bill.QualityUserCode                     //质检人员工号
+//		item.QualityUserName = bill.QualityUserName                     //质检人员姓名
+//
+//		item.FirstUploadAt = bill.UploadAt.Format("2006-01-02 15:04:05")      //初次回传时间
+//		item.LatestUploadAt = bill.LastUploadAt.Format("2006-01-02 15:04:05") //最新回传时间
+//
+//		backAtTheLatest := FindAndCalculateBackAtTheLatest(bill, ProCode)
+//		item.AtTheLateUploadAt = backAtTheLatest //最晚回传时间
+//		if backAtTheLatest != "" {
+//			t1, _ := time.ParseInLocation("2006-01-02 15:04:05", backAtTheLatest, time.Local)
+//			//是否超时
+//			if t1.Before(bill.UploadAt) {
+//				item.IsTheTimeOut = "是"
+//			} else {
+//				item.IsTheTimeOut = "否"
+//			}
+//			if bill.UploadAt.Before(t1) {
+//				item.LateTime = "" //延迟时间
+//			} else {
+//				item.LateTime = bill.UploadAt.Sub(t1).Round(time.Second).String() //延迟时间
+//			}
+//
+//		} else {
+//			item.IsTheTimeOut = ""
+//			item.LateTime = "0s" //延迟时间
+//		}
+//		item.WorkTime = bill.LastUploadAt.Sub(bill.ScanAt).Round(time.Second).String() //处理时长
+//
+//		//item.DiseaseDiagnosis = GetJiBingFiled(ProCode, bill.ID)                                           //疾病诊断
+//		item.SettlementMoney = CalculateMoney(bill, bill.LastUploadAt.Sub(bill.ScanAt).Round(time.Second)) //结算金额?
+//
+//		item.RequirementOfAging = B0108.CalculateRequirementOfAging(bill) //时效考核要求
+//		//item.ListingNum = CalculateListingNum(bill)                       //清单数量
+//		item.TheNumberOfCase = CalculateTheNumberOfCase(bill)             //案件次数
+//		//item.FieldCharacter = CalculateWriteCharacter(bill)               //录入字符数
+//		item.SettlementCharacter = CalculateXmlCharacter(bill)            //结算字符数
+//
+//		var blocks []l.ProjectBlock
+//		err = db.Model(&l.ProjectBlock{}).Where("bill_id = ? ", bill.ID).Find(&blocks).Error
+//		if err != nil {
+//			continue
+//		}
+//		op0BlockTime := make([]time.Time, 0)
+//		op1BlockTime := make([]time.Time, 0)
+//		op2BlockTime := make([]time.Time, 0)
+//		opQBlockTime := make([]time.Time, 0)
+//		for _, block := range blocks {
+//			op0BlockTime = append(op0BlockTime, block.Op0ApplyAt, block.Op0SubmitAt)
+//			op1BlockTime = append(op1BlockTime, block.Op1ApplyAt, block.Op1SubmitAt)
+//			op2BlockTime = append(op2BlockTime, block.Op2ApplyAt, block.Op2SubmitAt)
+//			opQBlockTime = append(opQBlockTime, block.OpqApplyAt, block.OpqSubmitAt)
+//		}
+//		op0MaxTime, op0MinTime := Compare(op0BlockTime)
+//		op1MaxTime, op1MinTime := Compare(op1BlockTime)
+//		op2MaxTime, op2MinTime := Compare(op2BlockTime)
+//		opQMaxTime, opQMinTime := Compare(opQBlockTime)
+//		item.Op0Entry = op0MinTime.Format("2006-01-02 15:04:05") //初审进入时间
+//		item.Op0End = op0MaxTime.Format("2006-01-02 15:04:05")   //初审结束时间
+//		item.Op0WorkTime = Calculate(op0MinTime, op0MaxTime)     //初审处理时间
+//
+//		item.Op1Entry = op1MinTime.Format("2006-01-02 15:04:05") //一码进入时间
+//		item.Op1End = op1MaxTime.Format("2006-01-02 15:04:05")   //一码结束时间
+//		item.Op1WorkTime = Calculate(op1MinTime, op1MaxTime)     //一码处理时间
+//
+//		item.Op2Entry = op2MinTime.Format("2006-01-02 15:04:05") //二码进入时间
+//		item.Op2End = op2MaxTime.Format("2006-01-02 15:04:05")   //二码结束时间
+//		item.Op2WorkTime = Calculate(op2MinTime, op2MaxTime)     //二码处理时间
+//
+//		item.OpQEntry = opQMinTime.Format("2006-01-02 15:04:05") //问题件进入时间
+//		item.OpQEnd = opQMaxTime.Format("2006-01-02 15:04:05")   //问题件结束时间
+//		item.OpQWorkTime = Calculate(opQMinTime, opQMaxTime)     //问题件处理时间
+//
+//		businessDetails = append(businessDetails, item)
+//	}
+//
+//	return nil, businessDetails, total
+//}
+//
+//func ExportBusinessDetails(info request.ExportBusinessDetailsSearch) (err error, path, name string) {
+//	ProCode := info.ProCode
+//	//连接数据库
+//	db := global.ProDbMap[ProCode]
+//	if db == nil {
+//		return global.ProDbErr, "", ""
+//	}
+//	businessDetails := make([]model.BusinessDetailsExport, 0)
+//	var bills []billObj
+//	err = db.Where("scan_at >= ? AND scan_at <= ? AND stage = '7' ", info.StartTime, info.EndTime).
+//		Preload("ProjectBlock").
+//		Preload("ProjectField").
+//		Find(&bills).Error
+//	if err != nil {
+//		return err, "", ""
+//	}
+//
+//	var item model.BusinessDetailsExport
+//	for _, obj := range bills {
+//		bill := obj.ProjectBill
+//		blocks := obj.ProjectBlock
+//		fields := obj.ProjectField
+//		item.CreateAt = bill.CreatedAt.Format("2006-01-02")             //日期
+//		item.BatchNum = bill.BatchNum                                   //批次号
+//		item.SaleChannel = bill.SaleChannel                             //销售渠道
+//		item.BillNum = bill.BillNum                                     //案件号
+//		item.PictureNumber = len(bill.Images)                           //影像数量
+//		item.Agency = bill.Agency                                       //机构
+//		item.InsuranceType = bill.InsuranceType                         //医保类型
+//		item.ScanAt = bill.ScanAt.Format("2006-01-02 15:04:05")         //扫描时间
+//		item.DownloadAt = bill.DownloadAt.Format("2006-01-02 15:04:05") //下载时间
+//		item.ExportAt = bill.ExportAt.Format("2006-01-02 15:04:05")     //导出时间
+//		item.Stage = const_data.BillStage[bill.Stage]                   //录入状态
+//		item.ClaimType = const_data.BillClaimType[bill.ClaimType]       //理赔类型
+//		item.CountMoney = bill.CountMoney                               //账单金额
+//		item.InvoiceNum = bill.InvoiceNum                               //发票数量
+//		item.Status = const_data.BillStatus[bill.Status]                //案件状态
+//		item.QuestionNum = bill.QuestionNum                             //问题件数量
+//		item.QualityUserCode = bill.QualityUserCode                     //质检人员工号
+//		item.QualityUserName = bill.QualityUserName                     //质检人员姓名
+//
+//		item.FirstUploadAt = bill.UploadAt.Format("2006-01-02 15:04:05")      //初次回传时间
+//		item.LatestUploadAt = bill.LastUploadAt.Format("2006-01-02 15:04:05") //最新回传时间
+//
+//		backAtTheLatest := FindAndCalculateBackAtTheLatest(bill, ProCode)
+//		item.AtTheLateUploadAt = backAtTheLatest //最晚回传时间
+//		if backAtTheLatest != "" {
+//			t1, _ := time.ParseInLocation("2006-01-02 15:04:05", backAtTheLatest, time.Local)
+//			//是否超时
+//			if t1.Before(bill.UploadAt) {
+//				item.IsTheTimeOut = "是"
+//			} else {
+//				item.IsTheTimeOut = "否"
+//			}
+//			if bill.UploadAt.Before(t1) {
+//				item.LateTime = "" //延迟时间
+//			} else {
+//				item.LateTime = bill.UploadAt.Sub(t1).Round(time.Second).String() //延迟时间
+//			}
+//
+//		} else {
+//			item.IsTheTimeOut = ""
+//			item.LateTime = "0s" //延迟时间
+//		}
+//		item.WorkTime = bill.LastUploadAt.Sub(bill.ScanAt).Round(time.Second).String()                     //处理时长
+//		item.DiseaseDiagnosis = GetJiBingFiled(fields)                                           //疾病诊断
+//		item.SettlementMoney = CalculateMoney(bill, bill.LastUploadAt.Sub(bill.ScanAt).Round(time.Second)) //结算金额?
+//
+//		item.RequirementOfAging = B0108.CalculateRequirementOfAging(bill) //时效考核要求
+//		item.ListingNum = CalculateListingNum(blocks)                       //清单数量
+//		item.TheNumberOfCase = CalculateTheNumberOfCase(bill)             //案件次数
+//		item.FieldCharacter = CalculateWriteCharacter(fields)               //录入字符数
+//		item.SettlementCharacter = CalculateXmlCharacter(bill)            //结算字符数
+//
+//		//var blocks []l.ProjectBlock
+//		//err = db.Model(&l.ProjectBlock{}).Where("bill_id = ? ", bill.ID).Find(&blocks).Error
+//		//if err != nil {
+//		//	continue
+//		//}
+//
+//		op0BlockTime := make([]time.Time, 0)
+//		op1BlockTime := make([]time.Time, 0)
+//		op2BlockTime := make([]time.Time, 0)
+//		opQBlockTime := make([]time.Time, 0)
+//		for _, block := range blocks {
+//			op0BlockTime = append(op0BlockTime, block.Op0ApplyAt, block.Op0SubmitAt)
+//			op1BlockTime = append(op1BlockTime, block.Op1ApplyAt, block.Op1SubmitAt)
+//			op2BlockTime = append(op2BlockTime, block.Op2ApplyAt, block.Op2SubmitAt)
+//			opQBlockTime = append(opQBlockTime, block.OpqApplyAt, block.OpqSubmitAt)
+//		}
+//		op0MaxTime, op0MinTime := Compare(op0BlockTime)
+//		op1MaxTime, op1MinTime := Compare(op1BlockTime)
+//		op2MaxTime, op2MinTime := Compare(op2BlockTime)
+//		opQMaxTime, opQMinTime := Compare(opQBlockTime)
+//		item.Op0Entry = op0MinTime.Format("2006-01-02 15:04:05") //初审进入时间
+//		item.Op0End = op0MaxTime.Format("2006-01-02 15:04:05")   //初审结束时间
+//		item.Op0WorkTime = Calculate(op0MinTime, op0MaxTime)     //初审处理时间
+//
+//		item.Op1Entry = op1MinTime.Format("2006-01-02 15:04:05") //一码进入时间
+//		item.Op1End = op1MaxTime.Format("2006-01-02 15:04:05")   //一码结束时间
+//		item.Op1WorkTime = Calculate(op1MinTime, op1MaxTime)     //一码处理时间
+//
+//		item.Op2Entry = op2MinTime.Format("2006-01-02 15:04:05") //二码进入时间
+//		item.Op2End = op2MaxTime.Format("2006-01-02 15:04:05")   //二码结束时间
+//		item.Op2WorkTime = Calculate(op2MinTime, op2MaxTime)     //二码处理时间
+//
+//		item.OpQEntry = opQMinTime.Format("2006-01-02 15:04:05") //问题件进入时间
+//		item.OpQEnd = opQMaxTime.Format("2006-01-02 15:04:05")   //问题件结束时间
+//		item.OpQWorkTime = Calculate(opQMinTime, opQMaxTime)     //问题件处理时间
+//
+//		businessDetails = append(businessDetails, item)
+//	}
+//	//s := strings.Replace(info.StartTime, " 00:00:00", "", -1)
+//	//e := strings.Replace(info.EndTime, " 00:00:00", "", -1)
+//	bookName := ProCode + "业务明细表" + ".xlsx"
+//	// 线上 uploads/file
+//	basicPath := global.GConfig.LocalUpload.FilePath + "业务明细表导出/" + ProCode + "/"
+//	// 本地
+//	//basicPath := "./"
+//	err = u.ExportBigExcel(basicPath, bookName, "", businessDetails)
+//	return err, basicPath + bookName, bookName
+//}
+//
+//func FindAndCalculateBackAtTheLatest(bill m.ProjectBill, proCode string) string {
+//	backAtTheLatest, _, _ := B0108.CalculateBackTimeAndTimeRemaining(bill)
+//	return backAtTheLatest
+//}
+//
+//func Calculate(min, max time.Time) string {
+//	return max.Sub(min).Round(time.Second).String()
+//}
+//
+//func Compare(times []time.Time) (maxTime, minTime time.Time) {
+//	isNotInitTime := true
+//	for i := 0; i < len(times); i++ {
+//		T := times[i]
+//		if T.Format("2006-01-02") != "0001-01-01" {
+//			if isNotInitTime {
+//				maxTime = T
+//				minTime = T
+//				isNotInitTime = false
+//			}
+//		} else {
+//			continue
+//		}
+//		if T.Before(minTime) && T.Format("2006-01-02") != "0001-01-01" {
+//			minTime = T
+//		}
+//		if T.After(maxTime) {
+//			maxTime = T
+//		}
+//	}
+//	return maxTime, minTime
+//}
+//
+//func CalculateXmlCharacter(bill m.ProjectBill) int {
+//	xmlFile := global.GConfig.LocalUpload.FilePath + bill.ProCode + "/upload_xml/" +
+//		fmt.Sprintf("%v/%v/%v/%v.xml",
+//			bill.CreatedAt.Year(), int(bill.CreatedAt.Month()),
+//			bill.CreatedAt.Day(), bill.BillNum)
+//	//xmlFile := "D:/stronger/server/files/B0118/upload_xml/2022/4/13/532022010000106.xml"
+//	global.GLog.Info("xml file:::" + xmlFile)
+//
+//	//拿到项目回传单据xml字符串
+//	data, err := ioutil.ReadFile(xmlFile)
+//	if err != nil {
+//		global.GLog.Error(xmlFile+" File reading error", zap.Error(err))
+//		return 0
+//	}
+//	data, err = ioutil.ReadAll(transform.NewReader(bytes.NewBuffer(data), simplifiedchinese.GBK.NewDecoder()))
+//	if err != nil {
+//		global.GLog.Error(xmlFile+" File reading error1", zap.Error(err))
+//		return 0
+//	}
+//	return CalculateXmlValue(string(data))
+//}
+//
+//func CalculateXmlValue(xml string) int {
+//	//fmt.Println(xml)
+//	character := 0
+//	reg := regexp.MustCompile("<[\\s\\S]*?>[\\s\\S]*?</[\\s\\S]*?>")
+//	reg1 := regexp.MustCompile("<[\\s\\S]*?>")
+//	reg2 := regexp.MustCompile("</[\\s\\S]*?>")
+//	//reg3 := regexp.MustCompile("[^\\x00-\\xff]")
+//	arr := reg.FindAllString(xml, -1)
+//	for _, v := range arr {
+//		//fmt.Println("1", v)
+//		v = reg2.ReplaceAllString(reg1.ReplaceAllString(v, ""), "")
+//		//fmt.Println("2", v)
+//		v = strings.Replace(v, "\n\t\t", "", -1)
+//		v = strings.ReplaceAll(v, "\n", "")
+//		v = strings.ReplaceAll(v, "\t", "")
+//		v = strings.ReplaceAll(v, " ", "")
+//		//fmt.Println("3", v)
+//		//global.GLog.Info("v", zap.Any("", v))
+//		//一个半角数字/字母/符号为一个字符，一个全角数字/字母/符号、中文为两个字符(项目有特殊要求，对应项目则以最新的需求为准)
+//		if v == "" {
+//			continue
+//		}
+//		reg3 := regexp.MustCompile("/·|，|。|《|》|‘|’|”|“|；|：|【|】|？|（|）|、/")
+//		for _, k := range v {
+//			if unicode.Is(unicode.Scripts["Han"], k) || reg3.Match([]byte(string(k))) {
+//				character += 2
+//			} else {
+//				character += 1
+//			}
+//		}
+//		//fmt.Println("4", character)
+//	}
+//	return character
+//}
+//
+//func CalculateWriteCharacter(fields []l.ProjectField) int {
+//	Character := 0
+//	//db := global.ProDbMap[bill.ProCode]
+//	//if db == nil {
+//	//	global.GLog.Error("CalculateWriteCharacter : "+global.ProDbErr.Error(), zap.Error(errors.New("CalculateWriteCharacter : "+global.ProDbErr.Error())))
+//	//	return 0
+//	//}
+//	//var blocks []l.ProjectBlock
+//	//err := db.Model(&l.ProjectBlock{}).Order("created_at desc").Where("bill_id = ? ", bill.ID).Find(&blocks).Error
+//	//if err != nil {
+//	//	global.GLog.Error(err.Error(), zap.Error(err))
+//	//	return 0
+//	//}
+//	//for _, v := range blocks {
+//	//var fields []l.ProjectField
+//	//err := db.Model(&l.ProjectField{}).Order("created_at desc").Where("bill_id = ? ", bill.ID).Find(&fields).Error
+//	//if err != nil {
+//	//	global.GLog.Error(err.Error(), zap.Error(err))
+//	//	return 0
+//	//}
+//	for _, f := range fields {
+//		if f.ResultInput != "no" {
+//			Character += Difference(f.ResultValue, "")
+//			//fmt.Println("2", f.Name+f.ResultValue, Character)
+//		}
+//	}
+//	//}
+//	return Character
+//}
+//
+//func CalculateTheNumberOfCase(bill m.ProjectBill) int {
+//	db := global.ProDbMap[bill.ProCode]
+//	if db == nil {
+//		global.GLog.Error("CalculateTheNumberOfCase : "+global.ProDbErr.Error(), zap.Error(errors.New("CalculateTheNumberOfCase : +"+global.ProDbErr.Error())))
+//		return 0
+//	}
+//	var total int64
+//	err := db.Model(&m.ProjectBill{}).Order("created_at desc").Where("bill_num = ? ", bill.BatchNum).Count(&total).Error
+//	if err != nil {
+//		global.GLog.Error(err.Error(), zap.Error(err))
+//		return 0
+//	}
+//	return int(total)
+//}
+//
+//func CalculateListingNum(blocks []l.ProjectBlock) int {
+//	ListingNum := 0
+//	//db := global.ProDbMap[bill.ProCode]
+//	//if db == nil {
+//	//	global.GLog.Error("CalculateListingNum : "+global.ProDbErr.Error(), zap.Error(errors.New("CalculateListingNum : +"+global.ProDbErr.Error())))
+//	//	return 0
+//	//}
+//	//var blocks []l.ProjectBlock
+//	//err := db.Model(&l.ProjectBlock{}).Order("created_at desc").Where("bill_id = ? ", bill.ID).Find(&blocks).Error
+//	//if err != nil {
+//	//	global.GLog.Error(err.Error(), zap.Error(err))
+//	//	return 0
+//	//}
+//	for _, v := range blocks {
+//		if v.IsLoop && strings.Index(v.Name, "清单") != -1 {
+//			ListingNum++
+//		}
+//	}
+//	return ListingNum
+//}
+//
+//func Difference(input, result string) (wrong int) {
+//	if len(input) > len(result) {
+//		if result == "" {
+//			wrong = GetWrongSumVersionTwo(input, result, len(result))
+//		} else {
+//			wrong = GetWrongSumVersionTwo(input, result, len(result)) + GetWrongSumVersionTwo(input[len(result):], "", 0)
+//		}
+//	} else if len(input) == len(result) {
+//		wrong = GetWrongSumVersionTwo(input, result, len(input))
+//	} else if len(input) < len(result) {
+//		wrong = GetWrongSumVersionTwo(input, result, len(input)) + GetWrongSumVersionTwo("", result[len(input):], 0)
+//	}
+//	return wrong
+//}
+//
+//func GetWrongSumVersionTwo(input, result string, length int) (wrong int) {
+//	if input == "" {
+//		return A(result)
+//	}
+//	w := 0
+//	//匹配中英文?/？
+//	//reg2 := regexp.MustCompile("[?|？]")
+//	if result != "" {
+//		if strings.Index(input, "?") != -1 || strings.Index(input, "？") != -1 {
+//			return AHasQuestMa(result)
+//		} else {
+//			for i := 0; i < length; i++ {
+//				if input[i] != result[i] {
+//					w += A(string(input[i]))
+//				}
+//			}
+//		}
+//	} else {
+//		return A(input)
+//	}
+//	return w
+//}
+//
+//func A(str string) int {
+//	fieldCharacter := 0
+//	reg2 := regexp.MustCompile("^[?|？]$")
+//	for _, rr := range str {
+//		if reg2.MatchString(string(rr)) {
+//			continue
+//		}
+//		if unicode.Is(unicode.Han, rr) {
+//			fieldCharacter = fieldCharacter + 2
+//		} else {
+//			fieldCharacter = fieldCharacter + 1
+//		}
+//	}
+//	return fieldCharacter
+//}
+//
+//func AHasQuestMa(str string) int {
+//	fieldCharacter := 0
+//	reg2 := regexp.MustCompile("^[?|？]$")
+//	for _, rr := range str {
+//		if reg2.MatchString(string(rr)) {
+//			continue
+//		}
+//		if unicode.Is(unicode.Han, rr) {
+//			fieldCharacter = fieldCharacter + 2
+//		} else {
+//			fieldCharacter = fieldCharacter + 1
+//		}
+//	}
+//	return fieldCharacter
+//}
+//
+//func GetJiBingFiled(f []l.ProjectField) (str string) {
+//
+//	//db := global.ProDbMap[proCode]
+//	//if db == nil {
+//	//	fmt.Println("GetJiBingFiled-3", global.ProDbErr)
+//	//}
+//	//
+//	//var f []l.ProjectField
+//	//err := db.Model(&l.ProjectField{}).Where("bill_id = ? ", billId).Find(&f).Error
+//	//if err != nil {
+//	//	fmt.Println("GetJiBingFiled-4", err)
+//	//	return ""
+//	//}
+//	for _, v := range f {
+//		if strings.Index(v.Name, "疾病诊断") != -1 && strings.Index(v.Name, "疾病诊断代码") == -1 && v.ResultValue != "" {
+//			str += v.ResultValue + ";"
+//		}
+//	}
+//	return str
+//}
+//
+//func CalculateMoney(bill m.ProjectBill, t time.Duration) string {
+//	types := bill.InsuranceType
+//	if types == "补录" {
+//		return "2.85"
+//	}
+//	if types == "" {
+//		if t <= time.Hour {
+//			return "4.28"
+//		}
+//		if t <= 2*time.Hour && time.Hour < t {
+//			return "4.09"
+//		}
+//		if t > 2*time.Hour {
+//			return "2"
+//		}
+//	}
+//	return ""
+//}

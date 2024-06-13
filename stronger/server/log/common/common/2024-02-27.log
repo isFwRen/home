@@ -1,0 +1,329 @@
+[stronger]2024/02/27 - 13:53:12.812	[34minfo[0m	initialize/gorm.go:45	user=postgres password=Change.Postgres host=192.168.202.18 dbname=stronger port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:12.843	[34minfo[0m	initialize/gorm.go:27	register table success
+[stronger]2024/02/27 - 13:53:13.046	[34minfo[0m	initialize/redis.go:21	redis connect ping response:	{"pong": "PONG"}
+[stronger]2024/02/27 - 13:53:13.053	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0118": 0}
+[stronger]2024/02/27 - 13:53:13.058	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0118 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.058	[34minfo[0m	initialize/pro_gorm.go:100	B0118::中意理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.059	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:13.072	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0106": 0}
+[stronger]2024/02/27 - 13:53:13.078	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0106 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.079	[34minfo[0m	initialize/pro_gorm.go:100	B0106::陕西国寿理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.079	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:13.127	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0110": 0}
+[stronger]2024/02/27 - 13:53:13.131	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0110 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.131	[34minfo[0m	initialize/pro_gorm.go:100	B0110::新疆国寿理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.131	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:13.148	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0108": 0}
+[stronger]2024/02/27 - 13:53:13.157	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0108 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.158	[34minfo[0m	initialize/pro_gorm.go:100	B0108::太平理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.158	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:13.174	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0114": 0}
+[stronger]2024/02/27 - 13:53:13.178	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0114 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.178	[34minfo[0m	initialize/pro_gorm.go:100	B0114::华夏理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.178	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:13.191	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0121": 0}
+[stronger]2024/02/27 - 13:53:13.196	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0121 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.196	[34minfo[0m	initialize/pro_gorm.go:100	B0121::百年人寿团险理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.196	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:13.233	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0102": 0}
+[stronger]2024/02/27 - 13:53:13.246	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0102 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.246	[34minfo[0m	initialize/pro_gorm.go:100	B0102::新民生理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.246	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:13.269	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0116": 0}
+[stronger]2024/02/27 - 13:53:13.273	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0116 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.274	[34minfo[0m	initialize/pro_gorm.go:100	B0116::华夏人寿团险理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.274	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:13.286	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0103": 0}
+[stronger]2024/02/27 - 13:53:13.298	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0103 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.299	[34minfo[0m	initialize/pro_gorm.go:100	B0103::广西贵州国寿理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.299	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:13.318	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0113": 0}
+[stronger]2024/02/27 - 13:53:13.331	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0113 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.331	[34minfo[0m	initialize/pro_gorm.go:100	B0113::百年理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.332	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:13.361	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0122": 0}
+[stronger]2024/02/27 - 13:53:13.373	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0122 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.374	[34minfo[0m	initialize/pro_gorm.go:100	B0122::信诚理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.374	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:13.398	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0114_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.399	[34minfo[0m	initialize/pro_task_gorm.go:49	B0114::华夏理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.416	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0121_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.417	[34minfo[0m	initialize/pro_task_gorm.go:49	B0121::百年人寿团险理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.443	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0102_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.443	[34minfo[0m	initialize/pro_task_gorm.go:49	B0102::新民生理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.476	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0103_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.476	[34minfo[0m	initialize/pro_task_gorm.go:49	B0103::广西贵州国寿理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.494	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0118_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.494	[34minfo[0m	initialize/pro_task_gorm.go:49	B0118::中意理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.517	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0110_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.517	[34minfo[0m	initialize/pro_task_gorm.go:49	B0110::新疆国寿理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.529	[31merror[0m	initialize/pro_task_gorm.go:44	B0108::太平理赔::task数据库异常	{"err": "failed to connect to `host=192.168.202.18 user=postgres database=B0108_task`: server error (FATAL: database \"B0108_task\" does not exist (SQLSTATE 3D000))"}
+[stronger]2024/02/27 - 13:53:13.534	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0122_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.534	[34minfo[0m	initialize/pro_task_gorm.go:49	B0122::信诚理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.552	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0106_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.553	[34minfo[0m	initialize/pro_task_gorm.go:49	B0106::陕西国寿理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.586	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0116_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.587	[34minfo[0m	initialize/pro_task_gorm.go:49	B0116::华夏人寿团险理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.604	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0113_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:13.604	[34minfo[0m	initialize/pro_task_gorm.go:49	B0113::百年理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:13.619	[33mwarn[0m	initialize/cron.go:138	定时通知	{"星期": 2}
+[stronger]2024/02/27 - 13:53:13.621	[34minfo[0m	initialize/cron.go:183	9 5 1 * * 3   
+[stronger]2024/02/27 - 13:53:13.621	[34minfo[0m	initialize/cron.go:183	14 10 1 * * 4   B0118
+[stronger]2024/02/27 - 13:53:13.622	[34minfo[0m	initialize/cron.go:183	13 6 22 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.622	[34minfo[0m	initialize/cron.go:183	32 25 19 * * 4   B0118
+[stronger]2024/02/27 - 13:53:13.622	[34minfo[0m	initialize/cron.go:183	10 4 11 * * 5   B0118
+[stronger]2024/02/27 - 13:53:13.622	[34minfo[0m	initialize/cron.go:183	9 1 11 * * 5   B0118
+[stronger]2024/02/27 - 13:53:13.622	[34minfo[0m	initialize/cron.go:183	9 1 11 * * 5   B0118
+[stronger]2024/02/27 - 13:53:13.622	[34minfo[0m	initialize/cron.go:183	8 6 12 * * 5   B0118
+[stronger]2024/02/27 - 13:53:13.622	[34minfo[0m	initialize/cron.go:183	4 4 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.622	[34minfo[0m	initialize/cron.go:183	4 5 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.623	[34minfo[0m	initialize/cron.go:183	4 6 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.623	[34minfo[0m	initialize/cron.go:183	4 7 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.623	[34minfo[0m	initialize/cron.go:183	4 8 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.623	[34minfo[0m	initialize/cron.go:183	4 9 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.623	[34minfo[0m	initialize/cron.go:183	4 10 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.623	[34minfo[0m	initialize/cron.go:183	4 11 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.623	[34minfo[0m	initialize/cron.go:183	4 12 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.623	[34minfo[0m	initialize/cron.go:183	4 13 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.624	[34minfo[0m	initialize/cron.go:183	4 14 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.624	[34minfo[0m	initialize/cron.go:183	4 15 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.624	[34minfo[0m	initialize/cron.go:183	4 16 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.624	[34minfo[0m	initialize/cron.go:183	4 17 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.624	[34minfo[0m	initialize/cron.go:183	4 18 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.624	[34minfo[0m	initialize/cron.go:183	4 19 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.624	[34minfo[0m	initialize/cron.go:183	4 20 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.624	[34minfo[0m	initialize/cron.go:183	4 21 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.624	[34minfo[0m	initialize/cron.go:183	4 22 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.625	[34minfo[0m	initialize/cron.go:183	4 23 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.625	[34minfo[0m	initialize/cron.go:183	4 24 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.625	[34minfo[0m	initialize/cron.go:183	4 25 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.625	[34minfo[0m	initialize/cron.go:183	4 26 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.625	[34minfo[0m	initialize/cron.go:183	4 27 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.625	[34minfo[0m	initialize/cron.go:183	4 28 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.625	[34minfo[0m	initialize/cron.go:183	4 29 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.626	[34minfo[0m	initialize/cron.go:183	4 30 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.626	[34minfo[0m	initialize/cron.go:183	4 31 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.626	[34minfo[0m	initialize/cron.go:183	4 32 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.626	[34minfo[0m	initialize/cron.go:183	4 33 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.627	[34minfo[0m	initialize/cron.go:183	4 34 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.627	[34minfo[0m	initialize/cron.go:183	4 35 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.627	[34minfo[0m	initialize/cron.go:183	4 36 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.627	[34minfo[0m	initialize/cron.go:183	4 37 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.627	[34minfo[0m	initialize/cron.go:183	4 38 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.627	[34minfo[0m	initialize/cron.go:183	4 39 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.627	[34minfo[0m	initialize/cron.go:183	4 40 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.627	[34minfo[0m	initialize/cron.go:183	4 41 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.628	[34minfo[0m	initialize/cron.go:183	4 42 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.628	[34minfo[0m	initialize/cron.go:183	4 43 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.628	[34minfo[0m	initialize/cron.go:183	4 44 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.628	[34minfo[0m	initialize/cron.go:183	4 45 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.628	[34minfo[0m	initialize/cron.go:183	4 46 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.628	[34minfo[0m	initialize/cron.go:183	4 47 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.628	[34minfo[0m	initialize/cron.go:183	4 48 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.628	[34minfo[0m	initialize/cron.go:183	4 49 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.628	[34minfo[0m	initialize/cron.go:183	4 50 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.629	[34minfo[0m	initialize/cron.go:183	4 51 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.629	[34minfo[0m	initialize/cron.go:183	4 52 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.629	[34minfo[0m	initialize/cron.go:183	4 53 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.629	[34minfo[0m	initialize/cron.go:183	4 54 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.629	[34minfo[0m	initialize/cron.go:183	4 55 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.629	[34minfo[0m	initialize/cron.go:183	4 56 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.629	[34minfo[0m	initialize/cron.go:183	4 57 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.630	[34minfo[0m	initialize/cron.go:183	4 58 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.630	[34minfo[0m	initialize/cron.go:183	4 59 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.630	[34minfo[0m	initialize/cron.go:183	4 0 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.630	[34minfo[0m	initialize/cron.go:183	4 1 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.630	[34minfo[0m	initialize/cron.go:183	4 2 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.630	[34minfo[0m	initialize/cron.go:183	4 3 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.630	[34minfo[0m	initialize/cron.go:183	4 4 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.630	[34minfo[0m	initialize/cron.go:183	4 5 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.631	[34minfo[0m	initialize/cron.go:183	4 6 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.631	[34minfo[0m	initialize/cron.go:183	4 7 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.631	[34minfo[0m	initialize/cron.go:183	4 8 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.631	[34minfo[0m	initialize/cron.go:183	4 9 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.631	[34minfo[0m	initialize/cron.go:183	4 10 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.631	[34minfo[0m	initialize/cron.go:183	4 11 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:13.647	[34minfo[0m	initialize/router.go:177	router register success
+[stronger]2024/02/27 - 13:53:15.005	[31merror[0m	schedule/timeliness_briefing.go:20	项目编码有误请检查redis: nil
+[stronger]2024/02/27 - 13:53:20.001	[31merror[0m	schedule/timeliness_briefing.go:20	项目编码有误请检查redis: nil
+[stronger]2024/02/27 - 13:53:25.010	[31merror[0m	schedule/timeliness_briefing.go:20	项目编码有误请检查redis: nil
+[stronger]2024/02/27 - 13:53:30.009	[31merror[0m	schedule/timeliness_briefing.go:20	项目编码有误请检查redis: nil
+[stronger]2024/02/27 - 13:53:57.421	[34minfo[0m	initialize/gorm.go:45	user=postgres password=Change.Postgres host=192.168.202.18 dbname=stronger port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:57.451	[34minfo[0m	initialize/gorm.go:27	register table success
+[stronger]2024/02/27 - 13:53:57.722	[34minfo[0m	initialize/redis.go:21	redis connect ping response:	{"pong": "PONG"}
+[stronger]2024/02/27 - 13:53:57.728	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0118": 0}
+[stronger]2024/02/27 - 13:53:57.732	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0118 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:57.732	[34minfo[0m	initialize/pro_gorm.go:100	B0118::中意理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:57.732	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:57.750	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0106": 0}
+[stronger]2024/02/27 - 13:53:57.764	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0106 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:57.764	[34minfo[0m	initialize/pro_gorm.go:100	B0106::陕西国寿理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:57.764	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:57.781	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0110": 0}
+[stronger]2024/02/27 - 13:53:57.791	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0110 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:57.792	[34minfo[0m	initialize/pro_gorm.go:100	B0110::新疆国寿理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:57.792	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:57.806	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0108": 0}
+[stronger]2024/02/27 - 13:53:57.820	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0108 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:57.820	[34minfo[0m	initialize/pro_gorm.go:100	B0108::太平理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:57.820	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:57.842	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0114": 0}
+[stronger]2024/02/27 - 13:53:57.847	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0114 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:57.847	[34minfo[0m	initialize/pro_gorm.go:100	B0114::华夏理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:57.847	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:57.859	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0121": 0}
+[stronger]2024/02/27 - 13:53:57.869	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0121 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:57.869	[34minfo[0m	initialize/pro_gorm.go:100	B0121::百年人寿团险理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:57.869	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:57.883	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0102": 0}
+[stronger]2024/02/27 - 13:53:57.891	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0102 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:57.891	[34minfo[0m	initialize/pro_gorm.go:100	B0102::新民生理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:57.891	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:57.912	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0116": 0}
+[stronger]2024/02/27 - 13:53:57.919	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0116 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:57.920	[34minfo[0m	initialize/pro_gorm.go:100	B0116::华夏人寿团险理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:57.920	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:57.944	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0103": 0}
+[stronger]2024/02/27 - 13:53:57.950	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0103 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:57.950	[34minfo[0m	initialize/pro_gorm.go:100	B0103::广西贵州国寿理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:57.950	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:57.963	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0113": 0}
+[stronger]2024/02/27 - 13:53:57.972	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0113 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:57.972	[34minfo[0m	initialize/pro_gorm.go:100	B0113::百年理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:57.973	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:57.987	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0122": 0}
+[stronger]2024/02/27 - 13:53:58.000	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0122 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:58.000	[34minfo[0m	initialize/pro_gorm.go:100	B0122::信诚理赔::历史数据库启动连接正常
+[stronger]2024/02/27 - 13:53:58.000	[34minfo[0m	initialize/gorm.go:38	register history success
+[stronger]2024/02/27 - 13:53:58.015	[31merror[0m	initialize/pro_task_gorm.go:44	B0108::太平理赔::task数据库异常	{"err": "failed to connect to `host=192.168.202.18 user=postgres database=B0108_task`: server error (FATAL: database \"B0108_task\" does not exist (SQLSTATE 3D000))"}
+[stronger]2024/02/27 - 13:53:58.020	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0121_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:58.021	[34minfo[0m	initialize/pro_task_gorm.go:49	B0121::百年人寿团险理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:58.038	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0122_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:58.038	[34minfo[0m	initialize/pro_task_gorm.go:49	B0122::信诚理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:58.065	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0103_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:58.066	[34minfo[0m	initialize/pro_task_gorm.go:49	B0103::广西贵州国寿理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:58.092	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0113_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:58.093	[34minfo[0m	initialize/pro_task_gorm.go:49	B0113::百年理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:58.120	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0118_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:58.120	[34minfo[0m	initialize/pro_task_gorm.go:49	B0118::中意理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:58.145	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0106_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:58.146	[34minfo[0m	initialize/pro_task_gorm.go:49	B0106::陕西国寿理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:58.172	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0110_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:58.172	[34minfo[0m	initialize/pro_task_gorm.go:49	B0110::新疆国寿理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:58.192	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0114_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:58.193	[34minfo[0m	initialize/pro_task_gorm.go:49	B0114::华夏理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:58.215	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0102_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:58.215	[34minfo[0m	initialize/pro_task_gorm.go:49	B0102::新民生理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:58.262	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0116_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/02/27 - 13:53:58.262	[34minfo[0m	initialize/pro_task_gorm.go:49	B0116::华夏人寿团险理赔::task数据库启动连接正常
+[stronger]2024/02/27 - 13:53:58.290	[33mwarn[0m	initialize/cron.go:138	定时通知	{"星期": 2}
+[stronger]2024/02/27 - 13:53:58.294	[34minfo[0m	initialize/cron.go:183	9 5 1 * * 3   
+[stronger]2024/02/27 - 13:53:58.294	[34minfo[0m	initialize/cron.go:183	14 10 1 * * 4   B0118
+[stronger]2024/02/27 - 13:53:58.294	[34minfo[0m	initialize/cron.go:183	13 6 22 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.294	[34minfo[0m	initialize/cron.go:183	32 25 19 * * 4   B0118
+[stronger]2024/02/27 - 13:53:58.294	[34minfo[0m	initialize/cron.go:183	10 4 11 * * 5   B0118
+[stronger]2024/02/27 - 13:53:58.294	[34minfo[0m	initialize/cron.go:183	9 1 11 * * 5   B0118
+[stronger]2024/02/27 - 13:53:58.295	[34minfo[0m	initialize/cron.go:183	9 1 11 * * 5   B0118
+[stronger]2024/02/27 - 13:53:58.295	[34minfo[0m	initialize/cron.go:183	8 6 12 * * 5   B0118
+[stronger]2024/02/27 - 13:53:58.295	[34minfo[0m	initialize/cron.go:183	4 4 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.295	[34minfo[0m	initialize/cron.go:183	4 5 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.295	[34minfo[0m	initialize/cron.go:183	4 6 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.295	[34minfo[0m	initialize/cron.go:183	4 7 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.295	[34minfo[0m	initialize/cron.go:183	4 8 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.296	[34minfo[0m	initialize/cron.go:183	4 9 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.296	[34minfo[0m	initialize/cron.go:183	4 10 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.296	[34minfo[0m	initialize/cron.go:183	4 11 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.296	[34minfo[0m	initialize/cron.go:183	4 12 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.296	[34minfo[0m	initialize/cron.go:183	4 13 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.296	[34minfo[0m	initialize/cron.go:183	4 14 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.297	[34minfo[0m	initialize/cron.go:183	4 15 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.297	[34minfo[0m	initialize/cron.go:183	4 16 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.297	[34minfo[0m	initialize/cron.go:183	4 17 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.297	[34minfo[0m	initialize/cron.go:183	4 18 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.297	[34minfo[0m	initialize/cron.go:183	4 19 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.297	[34minfo[0m	initialize/cron.go:183	4 20 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.297	[34minfo[0m	initialize/cron.go:183	4 21 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.298	[34minfo[0m	initialize/cron.go:183	4 22 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.298	[34minfo[0m	initialize/cron.go:183	4 23 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.298	[34minfo[0m	initialize/cron.go:183	4 24 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.298	[34minfo[0m	initialize/cron.go:183	4 25 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.298	[34minfo[0m	initialize/cron.go:183	4 26 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.298	[34minfo[0m	initialize/cron.go:183	4 27 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.298	[34minfo[0m	initialize/cron.go:183	4 28 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.298	[34minfo[0m	initialize/cron.go:183	4 29 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.299	[34minfo[0m	initialize/cron.go:183	4 30 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.299	[34minfo[0m	initialize/cron.go:183	4 31 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.299	[34minfo[0m	initialize/cron.go:183	4 32 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.299	[34minfo[0m	initialize/cron.go:183	4 33 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.299	[34minfo[0m	initialize/cron.go:183	4 34 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.299	[34minfo[0m	initialize/cron.go:183	4 35 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.299	[34minfo[0m	initialize/cron.go:183	4 36 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.300	[34minfo[0m	initialize/cron.go:183	4 37 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.300	[34minfo[0m	initialize/cron.go:183	4 38 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.300	[34minfo[0m	initialize/cron.go:183	4 39 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.300	[34minfo[0m	initialize/cron.go:183	4 40 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.300	[34minfo[0m	initialize/cron.go:183	4 41 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.300	[34minfo[0m	initialize/cron.go:183	4 42 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.300	[34minfo[0m	initialize/cron.go:183	4 43 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.300	[34minfo[0m	initialize/cron.go:183	4 44 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.301	[34minfo[0m	initialize/cron.go:183	4 45 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.301	[34minfo[0m	initialize/cron.go:183	4 46 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.301	[34minfo[0m	initialize/cron.go:183	4 47 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.301	[34minfo[0m	initialize/cron.go:183	4 48 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.301	[34minfo[0m	initialize/cron.go:183	4 49 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.301	[34minfo[0m	initialize/cron.go:183	4 50 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.301	[34minfo[0m	initialize/cron.go:183	4 51 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.301	[34minfo[0m	initialize/cron.go:183	4 52 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.302	[34minfo[0m	initialize/cron.go:183	4 53 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.302	[34minfo[0m	initialize/cron.go:183	4 54 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.302	[34minfo[0m	initialize/cron.go:183	4 55 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.302	[34minfo[0m	initialize/cron.go:183	4 56 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.302	[34minfo[0m	initialize/cron.go:183	4 57 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.302	[34minfo[0m	initialize/cron.go:183	4 58 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.302	[34minfo[0m	initialize/cron.go:183	4 59 13 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.302	[34minfo[0m	initialize/cron.go:183	4 0 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.303	[34minfo[0m	initialize/cron.go:183	4 1 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.303	[34minfo[0m	initialize/cron.go:183	4 2 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.303	[34minfo[0m	initialize/cron.go:183	4 3 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.303	[34minfo[0m	initialize/cron.go:183	4 4 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.303	[34minfo[0m	initialize/cron.go:183	4 5 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.303	[34minfo[0m	initialize/cron.go:183	4 6 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.303	[34minfo[0m	initialize/cron.go:183	4 7 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.303	[34minfo[0m	initialize/cron.go:183	4 8 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.303	[34minfo[0m	initialize/cron.go:183	4 9 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.304	[34minfo[0m	initialize/cron.go:183	4 10 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.304	[34minfo[0m	initialize/cron.go:183	4 11 14 * * 2   B0118
+[stronger]2024/02/27 - 13:53:58.321	[34minfo[0m	initialize/router.go:177	router register success
+[stronger]2024/02/27 - 13:54:00.005	[34minfo[0m	schedule/report.go:376	计算日报	{"时间": "[stronger]2024/02/26 - 13:54:00.005"}
+[stronger]2024/02/27 - 13:54:00.005	[34minfo[0m	schedule/update_timeout_stage.go:25	录入中超时单据放优先单池	{"时间": "[stronger]2024/02/27 - 13:54:00.005"}
+[stronger]2024/02/27 - 13:54:00.006	[31merror[0m	schedule/timeliness_briefing.go:20	项目编码有误请检查redis: nil
+[stronger]2024/02/27 - 13:54:00.005	[34minfo[0m	schedule/report.go:339	定时计算单据是否超时	{"时间": "[stronger]2024/02/27 - 13:54:00.005"}
+[stronger]2024/02/27 - 13:54:00.011	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.012	[34minfo[0m	schedule/update_timeout_stage.go:35	录入中超时单据放优先单池	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.014	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.018	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.021	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.028	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.031	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.034	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.039	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.042	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.044	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.047	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.051	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.055	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.058	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.062	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.066	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.068	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.072	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.075	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.078	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:00.081	[34minfo[0m	schedule/report.go:345	定时计算单据是否超时	{"bills": 0}
+[stronger]2024/02/27 - 13:54:04.005	[34minfo[0m	schedule/group_notice.go:21	发送通知【B0118】
+[stronger]2024/02/27 - 13:54:05.003	[31merror[0m	schedule/timeliness_briefing.go:20	项目编码有误请检查redis: nil
+[stronger]2024/02/27 - 13:54:10.013	[31merror[0m	schedule/timeliness_briefing.go:20	项目编码有误请检查redis: nil
+[stronger]2024/02/27 - 13:54:15.011	[31merror[0m	schedule/timeliness_briefing.go:20	项目编码有误请检查redis: nil
+[stronger]2024/02/27 - 13:54:16.079	[31merror[0m	schedule/group_notice.go:44	【B0118-3d0ce353da18458f8ea428c0e76192a7】定时发送失败
+[stronger]2024/02/27 - 13:54:20.009	[31merror[0m	schedule/timeliness_briefing.go:20	项目编码有误请检查redis: nil
+[stronger]2024/02/27 - 13:54:25.006	[31merror[0m	schedule/timeliness_briefing.go:20	项目编码有误请检查redis: nil

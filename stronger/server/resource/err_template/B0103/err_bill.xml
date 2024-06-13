@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<claimNo>单号</claimNo>
+<claimTpaId>标识</claimTpaId>
+<pageSum>1</pageSum>
+<bpoIsAbnormal>0</bpoIsAbnormal>
+<bpoAbnormalReason>F10删单备注</bpoAbnormalReason>
+<accNum>0</accNum>
+<bankAccInfoList>
+  <accCustName />
+  <bankCode />
+  <bankAccNo />
+  <subBankName />
+</bankAccInfoList>
+<bankAccInfoList>
+  <accCustName />
+  <bankCode />
+  <bankAccNo />
+  <subBankName />
+</bankAccInfoList>
+<rcptInfoList>
+  <rcptNo>000000</rcptNo>
+  <id></id>
+  <rcptNum>1</rcptNum>
+  <rcptType></rcptType>
+  <hospitalCode>4600008000000285</hospitalCode>
+  <expenMode>0020</expenMode>
+  <catalogCode>branchNo前4位+00</catalogCode>
+  <socialPayAmnt></socialPayAmnt>
+  <rcptAmnt>100</rcptAmnt>
+  <mIcd10Code>W54.951</mIcd10Code>
+  <beginDate>2016-05-22</beginDate>
+  <endDate>2016-05-22</endDate>
+  <siHealthType />
+  <operationCode />
+  <selfBAmnt />
+  <selfCAmnt />
+  <accountPayAmnt />
+  <overallPayAmnt />
+  <additionalPayAmnt />
+  <medSelectOffice />
+  <rcptOtherPayDetailList>
+  <uedUnitNo />
+  <otherSpiltAmnt />
+  </rcptOtherPayDetailList>
+  <costCategoryList>
+  <medicalCategoryName />
+  <classifiedAmount />
+  </costCategoryList>
+  <errorRcptList>
+  <listName>影像异常二次推送</listName>
+  <id></id>
+  <quantity>1</quantity>
+  <price>100</price>
+  <liablePct>1</liablePct>
+  <medSpec />
+  <betakeGenre />
+  <unit />
+  <rcptListNo>1</rcptListNo>
+  </errorRcptList>
+</rcptInfoList>
+<rcptInfoList>
+  <rcptNo>000000</rcptNo>
+  <id></id>
+  <rcptNum>1</rcptNum>
+  <rcptType></rcptType>
+  <hospitalCode>4600008000000285</hospitalCode>
+  <expenMode>0020</expenMode>
+  <catalogCode>branchNo前4位+00</catalogCode>
+  <socialPayAmnt></socialPayAmnt>
+  <rcptAmnt>100</rcptAmnt>
+  <mIcd10Code>W54.951</mIcd10Code>
+  <beginDate>2016-05-22</beginDate>
+  <endDate>2016-05-22</endDate>
+  <siHealthType />
+  <operationCode />
+  <selfBAmnt />
+  <selfCAmnt />
+  <accountPayAmnt />
+  <overallPayAmnt />
+  <additionalPayAmnt />
+  <medSelectOffice />
+  <rcptOtherPayDetailList>
+  <uedUnitNo />
+  <otherSpiltAmnt />
+  </rcptOtherPayDetailList>
+  <costCategoryList>
+  <medicalCategoryName />
+  <classifiedAmount />
+  </costCategoryList>
+  <errorRcptList>
+  <listName>影像异常二次推送</listName>
+  <id></id>
+  <quantity>1</quantity>
+  <price>100</price>
+  <liablePct>1</liablePct>
+  <medSpec />
+  <betakeGenre />
+  <unit />
+  <rcptListNo>1</rcptListNo>
+  </errorRcptList>
+</rcptInfoList>
+

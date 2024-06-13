@@ -1,0 +1,115 @@
+{
+  "name": "grape",
+  "version": "1.0.0",
+  "description": "A stronger application",
+  "main": "main.js",
+  "scripts": {
+    "help": "electron-forge help",
+    "dev": "set CONST=true && electron-forge start",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "asar": true,
+        "appVersion": "1.0.0",
+        "name": "[Name]",
+        "appCopyright": "-",
+        "icon": "./assets/img/icons/icon",
+        "win32metadata": {
+          "ProductName": "[Name]",
+          "CompanyName": "i-confluence",
+          "FileDescription": "grape for xingqiyi"
+        },
+        "extraResource": [
+          "./assets",
+          "./.durian"
+        ]
+      },
+      "rebuildConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ],
+      "plugins": [
+        {
+          "name": "@electron-forge/plugin-auto-unpack-natives",
+          "config": {}
+        }
+      ],
+      "publishers": [
+        {
+          "name": "@electron-forge/publisher-electron-release-server",
+          "config": {
+            "baseUrl": "http://192.168.202.18:8080",
+            "username": "username",
+            "password": "password"
+          }
+        }
+      ]
+    }
+  },
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "xingqiyi",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.2.1",
+    "@electron-forge/maker-deb": "^6.2.1",
+    "@electron-forge/maker-rpm": "^6.2.1",
+    "@electron-forge/maker-squirrel": "^6.2.1",
+    "@electron-forge/maker-zip": "^6.2.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.2.1",
+    "electron": "^22.3.27",
+    "7.css": "^0.14.0",
+    "hjson": "^3.2.2"
+  },
+  "dependencies": {
+    "electron-log": "^4.4.8",
+    "electron-squirrel-startup": "^1.0.0",
+    "socket.io-client": "^4.7.2",
+    "archiver": "^5.3.1",
+    "async": "^3.2.4",
+    "bittorrent-tracker": "9",
+    "chalk": "4",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.9",
+    "express": "^4.18.2",
+    "got": ">=11 <12",
+    "klaw": "^4.1.0",
+    "lodash": "^4.17.21",
+    "multer": "^1.4.5-lts.1",
+    "nedb": "^1.8.0",
+    "node-stream-zip": "^1.15.0",
+    "picomatch": "^2.3.1",
+    "serve-handler": "^6.1.5",
+    "socket.io": "^4.7.1",
+    "ulid": "^2.3.0",
+    "webtorrent": "1",
+    "xlsx": "^0.18.5"
+  }
+}

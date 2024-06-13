@@ -1,0 +1,36 @@
+{
+	"code": 200,
+	"data": [
+		{
+			"count": "1",
+			"invoiceNum": "123",
+			"medicalType": "string",
+			"name": "string",
+			"pay": "3",
+			"percent": "10",
+			"price": "11",
+			"type": "string"
+		},
+		{
+			"count": "21",
+			"invoiceNum": "123",
+			"medicalType": "string",
+			"name": "string",
+			"pay": "31",
+			"percent": "101",
+			"price": "111",
+			"type": "string"
+		},
+		{
+			"count": "211",
+			"invoiceNum": "1223",
+			"medicalType": "strin2g",
+			"name": "str3ing",
+			"pay": "341",
+			"percent": "1015",
+			"price": "111",
+			"type": "string"
+		}
+	],
+	"message": "获取成功"
+}

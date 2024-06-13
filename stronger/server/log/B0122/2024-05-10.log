@@ -1,0 +1,54 @@
+[stronger]2024/05/10 - 17:00:15.065	[34minfo[0m	initialize/gorm.go:44	user=postgres password=Change.Postgres host=192.168.202.18 dbname=stronger port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/05/10 - 17:00:15.102	[34minfo[0m	initialize/gorm.go:27	register table success
+[stronger]2024/05/10 - 17:00:15.111	[34minfo[0m	initialize/gorm.go:44	user=postgres password=Change.Postgres host=113.106.108.93 dbname=user_manager port=35432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/05/10 - 17:00:15.147	[34minfo[0m	initialize/gorm.go:27	register table success
+[stronger]2024/05/10 - 17:00:15.261	[34minfo[0m	initialize/redis.go:31	redis connect ping response:stronger	{"PONG": 0}
+[stronger]2024/05/10 - 17:00:15.276	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0122": 0}
+[stronger]2024/05/10 - 17:00:15.286	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0122 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/05/10 - 17:00:15.286	[34minfo[0m	initialize/pro_gorm.go:100	B0122::信诚理赔::历史数据库启动连接正常
+[stronger]2024/05/10 - 17:00:15.286	[34minfo[0m	initialize/gorm.go:39	register history success
+[stronger]2024/05/10 - 17:00:15.318	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0122_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/05/10 - 17:00:15.319	[34minfo[0m	initialize/pro_task_gorm.go:49	B0122::信诚理赔::task数据库启动连接正常
+[stronger]2024/05/10 - 17:00:15.548	[34minfo[0m	initialize/router_task.go:105	upload router register success
+[stronger]2024/05/10 - 17:00:27.455	[33mwarn[0m	middleware/gin_log.go:137	日志白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:00:27.455	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:00:27.455	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:00:27.472	[33mwarn[0m	middleware/gin_log.go:137	日志白名单:::/favicon.ico
+[stronger]2024/05/10 - 17:00:27.472	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/favicon.ico
+[stronger]2024/05/10 - 17:00:27.472	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/favicon.ico
+[stronger]2024/05/10 - 17:00:31.811	[33mwarn[0m	middleware/gin_log.go:137	日志白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:00:31.811	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:00:31.811	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:00:41.492	[33mwarn[0m	middleware/gin_log.go:137	日志白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:00:41.492	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:00:41.492	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:00:53.247	[33mwarn[0m	middleware/gin_log.go:137	日志白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:00:53.247	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:00:53.248	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:01:19.110	[34minfo[0m	initialize/gorm.go:44	user=postgres password=Change.Postgres host=192.168.202.18 dbname=stronger port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/05/10 - 17:01:19.144	[34minfo[0m	initialize/gorm.go:27	register table success
+[stronger]2024/05/10 - 17:01:19.162	[34minfo[0m	initialize/gorm.go:44	user=postgres password=Change.Postgres host=113.106.108.93 dbname=user_manager port=35432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/05/10 - 17:01:19.202	[34minfo[0m	initialize/gorm.go:27	register table success
+[stronger]2024/05/10 - 17:01:19.296	[34minfo[0m	initialize/redis.go:31	redis connect ping response:stronger	{"PONG": 0}
+[stronger]2024/05/10 - 17:01:19.309	[34minfo[0m	initialize/pro_gorm.go:61	加载常量耗时	{"B0122": 0}
+[stronger]2024/05/10 - 17:01:19.320	[34minfo[0m	initialize/pro_gorm.go:99	user=postgres password=Change.Postgres host=192.168.202.18 dbname=winter_B0122 port=5432 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/05/10 - 17:01:19.321	[34minfo[0m	initialize/pro_gorm.go:100	B0122::信诚理赔::历史数据库启动连接正常
+[stronger]2024/05/10 - 17:01:19.321	[34minfo[0m	initialize/gorm.go:39	register history success
+[stronger]2024/05/10 - 17:01:19.351	[34minfo[0m	initialize/pro_task_gorm.go:48	user=postgres password=Change.Postgres host=192.168.202.18 dbname=B0122_task port=5433 sslmode=disable TimeZone=Asia/Shanghai
+[stronger]2024/05/10 - 17:01:19.352	[34minfo[0m	initialize/pro_task_gorm.go:49	B0122::信诚理赔::task数据库启动连接正常
+[stronger]2024/05/10 - 17:01:19.601	[34minfo[0m	initialize/router_task.go:105	upload router register success
+[stronger]2024/05/10 - 17:01:25.209	[33mwarn[0m	middleware/gin_log.go:137	日志白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:01:25.209	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:01:25.209	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:01:26.945	[33mwarn[0m	middleware/gin_log.go:137	日志白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:01:26.945	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:01:26.945	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:01:28.681	[33mwarn[0m	middleware/gin_log.go:137	日志白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:01:28.681	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:01:28.681	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:01:28.847	[33mwarn[0m	middleware/gin_log.go:137	日志白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:01:28.847	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:01:28.848	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:01:29.015	[33mwarn[0m	middleware/gin_log.go:137	日志白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:01:29.015	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html
+[stronger]2024/05/10 - 17:01:29.015	[33mwarn[0m	middleware/jwt.go:177		登录白名单:::/swagger/index.html

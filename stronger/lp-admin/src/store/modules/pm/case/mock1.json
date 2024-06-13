@@ -1,0 +1,307 @@
+{
+	"code": 200,
+	"data": {
+		"bill": {
+			"agency": "string",
+			"batchNum": "string",
+			"billName": "682021060032022",
+			"billNum": "682021060032022",
+			"claimType": 0,
+			"countMoney": 0,
+			"createdAt": "string",
+			"delRemarks": "string",
+			"downloadAt": "string",
+			"downloadPath": "B0118/download/2021/12-09/682021060032022/",
+			"editVersion": 0,
+			"exportAt": "string",
+			"id": "913388865866170368",
+			"images": [
+				"682021060032022-030101-245209203-1.pdf",
+				"682021060032022-030112-245231475-29.tif",
+				"682021060032022-030114-245209197-1.jpg",
+				"682021060032022-030115-245209198-1.png"
+			],
+			"insuranceType": 0,
+			"invoiceNum": 0,
+			"isAutoUpload": true,
+			"pictures": [
+				"682021060032022-030101-245209203-1.pdf",
+				"682021060032022-030112-245231475-29.tif",
+				"682021060032022-030114-245209197-1.jpg",
+				"682021060032022-030115-245209198-1.png"
+			],
+			"preStatus": 0,
+			"proCode": "B0118",
+			"qualityUser": "string",
+			"questionNum": 0,
+			"saleChannel": "string",
+			"scanAt": "string",
+			"stage": 0,
+			"status": 0,
+			"stickLevel": 0,
+			"updatedAt": "string",
+			"uploadAt": "string",
+			"wrongNote": "string"
+		},
+		"invoice": [
+			{
+				"baoXiaoDan": [
+					{
+						"billID": "string",
+						"blockID": "string",
+						"blockIndex": 0,
+						"code": "label1",
+						"createdAt": "string",
+						"feedbackDate": "string",
+						"fieldIndex": 0,
+						"finalInput": "string",
+						"finalValue": "value2",
+						"id": "fieldId",
+						"isPractice": true,
+						"issues": [
+							{
+								"code": "string",
+								"fieldId": "string",
+								"message": "string",
+								"type": "string"
+							}
+						],
+						"name": "label2",
+						"op0Input": "string",
+						"op0Value": "string",
+						"op1Input": "string",
+						"op1Value": "string",
+						"op2Input": "string",
+						"op2Value": "string",
+						"opqInput": "string",
+						"opqValue": "string",
+						"resultInput": "string",
+						"resultValue": "value1",
+						"rightValue": "string",
+						"updatedAt": "string"
+					}
+				],
+				"code": "账单号",
+				"id": "发票属性",
+				"invoice": [
+					{
+						"billID": "string",
+						"blockID": "string",
+						"blockIndex": 0,
+						"code": "string",
+						"createdAt": "string",
+						"feedbackDate": "string",
+						"fieldIndex": 0,
+						"finalInput": "string",
+						"finalValue": "string",
+						"id": "string1",
+						"isPractice": false,
+						"issues": [
+							{
+								"code": "string",
+								"fieldId": "string",
+								"message": "string",
+								"type": "string"
+							}
+						],
+						"name": "string",
+						"op0Input": "string",
+						"op0Value": "string",
+						"op1Input": "string",
+						"op1Value": "string",
+						"op2Input": "string",
+						"op2Value": "string",
+						"opqInput": "string",
+						"opqValue": "string",
+						"resultInput": "string",
+						"resultValue": "string",
+						"rightValue": "string",
+						"updatedAt": "string"
+					}
+				],
+				"invoiceDaXiang": [
+					{
+						"billID": "string",
+						"blockID": "string",
+						"blockIndex": 0,
+						"code": "string",
+						"createdAt": "string",
+						"feedbackDate": "string",
+						"fieldIndex": 0,
+						"finalInput": "string",
+						"finalValue": "string",
+						"id": "string2",
+						"isPractice": true,
+						"issues": [
+							{
+								"code": "string",
+								"fieldId": "string",
+								"message": "string",
+								"type": "string"
+							}
+						],
+						"name": "string",
+						"op0Input": "string",
+						"op0Value": "string",
+						"op1Input": "string",
+						"op1Value": "string",
+						"op2Input": "string",
+						"op2Value": "string",
+						"opqInput": "string",
+						"opqValue": "string",
+						"resultInput": "string",
+						"resultValue": "string",
+						"rightValue": "string",
+						"updatedAt": "string"
+					}
+				],
+				"money": "账单金额",
+				"qingDan": [
+					{
+						"billID": "string",
+						"blockID": "string",
+						"blockIndex": 0,
+						"code": "string",
+						"createdAt": "string",
+						"feedbackDate": "string",
+						"fieldIndex": 0,
+						"finalInput": "string",
+						"finalValue": "string",
+						"id": "string3",
+						"isPractice": true,
+						"issues": [
+							{
+								"code": "string",
+								"fieldId": "string",
+								"message": "string",
+								"type": "string"
+							}
+						],
+						"name": "string",
+						"op0Input": "string",
+						"op0Value": "string",
+						"op1Input": "string",
+						"op1Value": "string",
+						"op2Input": "string",
+						"op2Value": "string",
+						"opqInput": "string",
+						"opqValue": "string",
+						"resultInput": "string",
+						"resultValue": "string",
+						"rightValue": "string",
+						"updatedAt": "string"
+					}
+				],
+				"thirdBaoXiaoDan1": [
+					{
+						"billID": "string",
+						"blockID": "string",
+						"blockIndex": 0,
+						"code": "string",
+						"createdAt": "string",
+						"feedbackDate": "string",
+						"fieldIndex": 0,
+						"finalInput": "string",
+						"finalValue": "string",
+						"id": "string4",
+						"isPractice": true,
+						"issues": [
+							{
+								"code": "string",
+								"fieldId": "string",
+								"message": "string",
+								"type": "string"
+							}
+						],
+						"name": "string",
+						"op0Input": "string",
+						"op0Value": "string",
+						"op1Input": "string",
+						"op1Value": "string",
+						"op2Input": "string",
+						"op2Value": "string",
+						"opqInput": "string",
+						"opqValue": "string",
+						"resultInput": "string",
+						"resultValue": "string",
+						"rightValue": "string",
+						"updatedAt": "string"
+					}
+				],
+				"thirdBaoXiaoDan2": [
+					{
+						"billID": "string",
+						"blockID": "string",
+						"blockIndex": 0,
+						"code": "string",
+						"createdAt": "string",
+						"feedbackDate": "string",
+						"fieldIndex": 0,
+						"finalInput": "string",
+						"finalValue": "string",
+						"id": "string5",
+						"isPractice": true,
+						"issues": [
+							{
+								"code": "string",
+								"fieldId": "string",
+								"message": "string",
+								"type": "string"
+							}
+						],
+						"name": "string",
+						"op0Input": "string",
+						"op0Value": "string",
+						"op1Input": "string",
+						"op1Value": "string",
+						"op2Input": "string",
+						"op2Value": "string",
+						"opqInput": "string",
+						"opqValue": "string",
+						"resultInput": "string",
+						"resultValue": "string",
+						"rightValue": "string",
+						"updatedAt": "string"
+					}
+				],
+				"thirdBaoXiaoDan3": [
+					{
+						"billID": "string",
+						"blockID": "string",
+						"blockIndex": 0,
+						"code": "string",
+						"createdAt": "string",
+						"feedbackDate": "string",
+						"fieldIndex": 0,
+						"finalInput": "string",
+						"finalValue": "string",
+						"id": "string6",
+						"isPractice": true,
+						"issues": [
+							{
+								"code": "string",
+								"fieldId": "string",
+								"message": "string",
+								"type": "string"
+							}
+						],
+						"name": "string",
+						"op0Input": "string",
+						"op0Value": "string",
+						"op1Input": "string",
+						"op1Value": "string",
+						"op2Input": "string",
+						"op2Value": "string",
+						"opqInput": "string",
+						"opqValue": "string",
+						"resultInput": "string",
+						"resultValue": "string",
+						"rightValue": "string",
+						"updatedAt": "string"
+					}
+				]
+			}
+		]
+	},
+	"msg": "操作成功"
+}

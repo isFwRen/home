@@ -1,0 +1,21 @@
+请在需要做权限屏蔽的按钮页面添加以下内容
+具体的字段匹配请参考:字典.docx
+
+步骤1：<script>下添加
+import {getAuthCookie2} from "../../utils/getCookie"
+
+步骤2：data: 下添加
+power: {},
+  auth: {
+    show: false
+  },
+
+步骤3：与method同级，屏蔽需要的id_xxx_w请参考数据库authority-_manager注释
+mounted() {
+    var username = getAuthCookie2("userName")
+    this.power = JSON.parse(sessionStorage.getItem(username))
+    this.auth.show = this.power.id_110_w
+},
+
+步骤四，想要屏蔽的位置
+v-if="this.auth.show"

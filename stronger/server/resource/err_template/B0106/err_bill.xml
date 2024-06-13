@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <claimNo>单号</claimNo>
+  <claimTpaId>标识</claimTpaId>
+  <pageSum>1</pageSum>
+  <bpoIsAbnormal>0</bpoIsAbnormal>
+  <bpoAbnormalReason>F10删单备注</bpoAbnormalReason>
+  <accNum />
+  <bankAccInfoList>
+   <accCustName />
+   <bankCode />
+   <bankAccNo />
+   <subBankName />
+  </bankAccInfoList>
+  <bankAccInfoList>
+   <accCustName />
+   <bankCode />
+   <bankAccNo />
+   <subBankName />
+  </bankAccInfoList>
+  <rcptInfoList>
+   <rcptNo>000000</rcptNo>
+   <id></id>
+   <rcptNum>1</rcptNum>
+   <rcptType></rcptType>
+   <hospitalCode>异常案件</hospitalCode>
+   <expenMode>0040</expenMode>
+   <catalogCode>branchNo前4位+00</catalogCode>
+   <socialPayAmnt>10</socialPayAmnt>
+   <rcptAmnt>100</rcptAmnt>
+   <mIcd10Code>J03</mIcd10Code>
+   <beginDate>2016-03-01</beginDate>
+   <endDate>2016-03-07</endDate>
+   <siHealthType />
+   <operationCode />
+   <selfBAmnt />
+   <selfCAmnt />
+   <accountPayAmnt />
+   <overallPayAmnt />
+   <additionalPayAmnt />
+   <medSelectOffice />
+   <rcptOtherPayDetailList>
+    <uedUnitNo />
+    <otherSpiltAmnt />
+   </rcptOtherPayDetailList>
+   <costCategoryList>
+    <medicalCategoryName />
+    <classifiedAmount />
+   </costCategoryList>
+   <errorRcptList>
+    <listName>异常案件</listName>
+    <id></id>
+    <quantity>1</quantity>
+    <price>100</price>
+    <liablePct>1</liablePct>
+    <medSpec />
+    <betakeGenre />
+    <unit />
+    <rcptListNo>1</rcptListNo>
+   </errorRcptList>
+  </rcptInfoList>
+  <rcptInfoList>
+   <rcptNo>000000</rcptNo>
+   <id></id>
+   <rcptNum>1</rcptNum>
+   <rcptType></rcptType>
+   <hospitalCode>异常案件</hospitalCode>
+   <expenMode>0040</expenMode>
+   <catalogCode>branchNo前4位+00</catalogCode>
+   <socialPayAmnt>10</socialPayAmnt>
+   <rcptAmnt>100</rcptAmnt>
+   <mIcd10Code>J03</mIcd10Code>
+   <beginDate>2016-03-01</beginDate>
+   <endDate>2016-03-07</endDate>
+   <siHealthType />
+   <operationCode />
+   <selfBAmnt />
+   <selfCAmnt />
+   <accountPayAmnt />
+   <overallPayAmnt />
+   <additionalPayAmnt />
+   <medSelectOffice />
+   <rcptOtherPayDetailList>
+    <uedUnitNo />
+    <otherSpiltAmnt />
+   </rcptOtherPayDetailList>
+   <costCategoryList>
+    <medicalCategoryName />
+    <classifiedAmount />
+   </costCategoryList>
+   <errorRcptList>
+    <listName>异常案件</listName>
+    <id></id>
+    <quantity>1</quantity>
+    <price>100</price>
+    <liablePct>1</liablePct>
+    <medSpec />
+    <betakeGenre />
+    <unit />
+    <rcptListNo>1</rcptListNo>
+   </errorRcptList>
+  </rcptInfoList>
+

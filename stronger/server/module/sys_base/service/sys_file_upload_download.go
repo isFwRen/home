@@ -1,0 +1,58 @@
+package service
+
+import (
+	"server/global"
+	"server/module/sys_base/model"
+)
+
+// @title    Upload
+// @description   创建文件上传记录
+// @param     file            model.ExaFileUploadAndDownload
+// @auth                     （2020/04/05  20:22）
+// @return                    error
+
+func Upload(file model.ExaFileUploadAndDownload) error {
+	err := global.GDb.Create(&file).Error
+	return err
+}
+
+// @title    FindFile
+// @description   删除文件切片记录
+// @auth                     （2020/04/05  20:22）
+// @param     id              uint
+// @return                    error
+
+func FindFile(id uint) (error, model.ExaFileUploadAndDownload) {
+	var file model.ExaFileUploadAndDownload
+	err := global.GDb.Where("id = ?", id).First(&file).Error
+	return err, file
+}
+
+// @title    DeleteFile
+// @description   删除文件记录
+// @auth                     （2020/04/05  20:22）
+// @param     file            model.ExaFileUploadAndDownload
+// @return                    error
+
+func DeleteFile(file model.ExaFileUploadAndDownload) error {
+	err := global.GDb.Where("id = ?", file.ID).Unscoped().Delete(file).Error
+	return err
+}
+
+// @title    GetFileRecordInfoList
+// @description   分页获取数据
+// @auth                     （2020/04/05  20:22）
+// @param     info            PageInfo
+// @return    err             error
+// @return    list            error
+// @return    total           error
+
+func GetFileRecordInfoList(info model.PageInfo) (err error, list interface{}, total int64) {
+	limit := info.PageSize
+	offset := info.PageSize * (info.PageIndex - 1)
+	db := global.GDb
+	var fileLists []model.ExaFileUploadAndDownload
+	err = db.Find(&fileLists).Count(&total).Error
+	err = db.Limit(limit).Offset(offset).Order("updated_at desc").Find(&fileLists).Error
+	return err, fileLists, total
+}

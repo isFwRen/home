@@ -1,0 +1,3 @@
+步骤1：请将login.vue里面的loginVefify()注释掉
+步骤2：请将 <div class="vPic">内容注释掉，以及下面的<button>取消注释，即可使用钉钉验证码
+步骤3：后端需要修改登录的api.login 将store.Verify(L.CaptchaId, L.Captcha, true) 修改成L.CaptchaId == L.Captcha

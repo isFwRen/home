@@ -1,0 +1,19 @@
+.primary-bg {
+  background-color: #1867c0;
+  color: #fff;
+}
+
+.success-bg {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.warning-bg {
+  background-color: #fb8c00;
+  color: #fff;
+}
+
+.error-bg {
+  background-color: #ff5252;
+  color: #fff;
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <claimNo>单号</claimNo>
+  <claimTpaId>标识</claimTpaId>
+  <pageSum>1</pageSum>
+  <bpoIsAbnormal>0</bpoIsAbnormal>
+  <bpoAbnormalReason>F10删单备注</bpoAbnormalReason>
+  <accNum></accNum>
+  <rcptInfoList>
+   <rcptNo>000000</rcptNo>
+   <id></id>
+   <rcptNum>1</rcptNum>
+   <rcptType></rcptType>
+   <hospitalCode>6500000000000349</hospitalCode>
+   <expenMode>0020</expenMode>
+   <catalogCode>460002</catalogCode>
+   <socialPayAmnt></socialPayAmnt>
+   <rcptAmnt>100</rcptAmnt>
+   <mIcd10Code>R52.9</mIcd10Code>
+   <beginDate>2016-05-22</beginDate>
+   <endDate>2016-05-22</endDate>
+   <siHealthType />
+  </rcptInfoList>
+  <rcptInfoList>
+   <rcptNo>000000</rcptNo>
+   <id></id>
+   <rcptNum>1</rcptNum>
+   <rcptType></rcptType>
+   <hospitalCode>6500000000000349</hospitalCode>
+   <expenMode>0020</expenMode>
+   <catalogCode>460002</catalogCode>
+   <socialPayAmnt></socialPayAmnt>
+   <rcptAmnt>100</rcptAmnt>
+   <mIcd10Code>R52.9</mIcd10Code>
+   <beginDate>2016-05-22</beginDate>
+   <endDate>2016-05-22</endDate>
+   <siHealthType />
+  </rcptInfoList>
+

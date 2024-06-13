@@ -1,0 +1,34 @@
+html, body {
+  color: #333;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+  overflow: hidden !important;
+}
+
+.vxe-table--render-default .vxe-table--border-line {
+  z-index: 5 !important;
+}
+
+.is--checked.vxe-custom--option 
+.vxe-checkbox--icon:before, 
+.is--checked.vxe-export--panel-column-option .vxe-checkbox--icon:before, 
+.is--checked.vxe-table--filter-option .vxe-checkbox--icon:before, 
+.is--indeterminate.vxe-custom--option .vxe-checkbox--icon:before, 
+.is--indeterminate.vxe-export--panel-column-option .vxe-checkbox--icon:before, 
+.is--indeterminate.vxe-table--filter-option .vxe-checkbox--icon:before, 
+.vxe-table--render-default .is--checked.vxe-cell--checkbox .vxe-checkbox--icon:before, 
+.vxe-table--render-default .is--indeterminate.vxe-cell--checkbox .vxe-checkbox--icon:before {
+  border-color: #1976d2  !important;
+  background-color: #1976d2  !important;
+}
+
+.vxe-custom--option:not(.is--disabled):hover .vxe-checkbox--icon:before, 
+.vxe-export--panel-column-option:not(.is--disabled):hover .vxe-checkbox--icon:before, 
+.vxe-table--filter-option:not(.is--disabled):hover .vxe-checkbox--icon:before, 
+.vxe-table--render-default .vxe-cell--checkbox:not(.is--disabled):hover .vxe-checkbox--icon:before {
+  border-color: #1976d2  !important;
+}
+
+.writeBlock {
+  top: unset !important;
+}

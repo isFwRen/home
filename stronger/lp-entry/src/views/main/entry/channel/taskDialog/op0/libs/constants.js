@@ -1,0 +1,1 @@
+export const op0ThumbIdPrefix = 'op0Thumb'

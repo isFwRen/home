@@ -1,0 +1,41 @@
+.full {
+  position: relative;
+  height: 100%;
+
+  .fields-wrapper {
+    // padding-bottom: 420px;
+  }
+}
+
+.op1op2opq {
+  height: 100%;
+  overflow-y: auto;
+
+  h3.op-title {
+    min-height: 22px;
+    font-weight: bold;
+  }
+
+  .row {
+    .col {
+      overflow-y: auto;
+
+      &.image-contain {
+        position: relative;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+.loading {
+  width: 100%;
+
+  &.t-loading {
+    margin-bottom: 50px;
+  }
+
+  &.b-loading {
+    margin-bottom: 420px;
+  }
+}
